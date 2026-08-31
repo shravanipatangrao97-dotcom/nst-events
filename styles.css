@@ -695,25 +695,100 @@ html, body {
   box-shadow: 6px 6px 0px #ffffff;
 }
 
+/* ==========================================================================
+   5. LOGIN PAGE COMPOSITION & TRANSLUCENT BACKGROUND WATERMARK
+   ========================================================================== */
 .login-composition-wrapper {
   min-height: calc(100vh - 60px);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 60px 24px;
+  padding: 90px 24px;
   position: relative;
+  overflow: hidden;
 }
 
+/* Giant Translucent Background Typography Watermark */
+.login-translucent-bg-text {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-8deg);
+  font-family: var(--font-display);
+  font-size: clamp(90px, 15vw, 190px);
+  font-weight: 900;
+  color: rgba(245, 245, 242, 0.035);
+  -webkit-text-stroke: 2px rgba(245, 245, 242, 0.08);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1;
+  text-transform: uppercase;
+  user-select: none;
+  letter-spacing: -3px;
+  line-height: 0.8;
+}
+
+.login-translucent-bg-watermark {
+  position: absolute;
+  bottom: 4%;
+  right: -2%;
+  font-family: var(--font-mono);
+  font-size: clamp(40px, 8vw, 110px);
+  font-weight: 900;
+  color: rgba(0, 87, 255, 0.08);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+/* Enlarged Login Registration Poster Card */
 .login-poster-card {
   width: 100%;
-  max-width: 560px;
+  max-width: 840px;
   background: var(--bg-paper-white);
   color: var(--bg-black);
   border: 4px solid #000000;
-  padding: 44px 40px;
-  box-shadow: 16px 16px 0px var(--electric-blue);
+  padding: 64px 56px;
+  box-shadow: 20px 20px 0px var(--electric-blue);
   position: relative;
   z-index: 2;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.login-poster-card:hover {
+  box-shadow: 24px 24px 0px var(--electric-blue);
+}
+
+.login-matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 28px 0 36px 0;
+}
+
+.login-matrix-box {
+  border: 2px solid #000000;
+  background: #ffffff;
+  padding: 16px 20px;
+}
+
+.login-matrix-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: #555555;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.login-matrix-val {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 800;
+  color: #000000;
+  margin-top: 6px;
 }
 
 .login-poster-card table {
@@ -725,34 +800,60 @@ html, body {
 
 .login-poster-card td {
   border: 2px solid #000000;
-  padding: 10px 14px;
-  font-size: 12px;
+  padding: 12px 18px;
+  font-size: 14px;
   font-weight: 700;
 }
 
 .login-google-cta {
   width: 100%;
-  height: 56px;
+  height: 64px;
   background: var(--electric-blue);
   border: 3px solid #000000;
   color: #ffffff;
   font-family: var(--font-mono);
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 900;
   letter-spacing: 2px;
   text-transform: uppercase;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 14px;
   cursor: pointer;
-  box-shadow: 4px 4px 0px #000000;
-  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 6px 6px 0px #000000;
+  transition: transform 0.15s, box-shadow 0.15s, background-color 0.15s;
 }
 
 .login-google-cta:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #000000;
+  transform: translate(-3px, -3px);
+  box-shadow: 10px 10px 0px #000000;
+  background: #0046d5;
+}
+
+/* Google SSO Modal Overlay */
+.google-sso-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: kinetic-fade-in 0.25s ease-out;
+}
+
+.google-sso-card {
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  color: #000000;
+  border: 4px solid #000000;
+  padding: 36px 32px;
+  box-shadow: 16px 16px 0px var(--electric-blue);
+  position: relative;
 }
 
 @media (max-width: 900px) {
@@ -761,4 +862,6 @@ html, body {
   .nav-links { display: none; }
   .countdown-grid { grid-template-columns: repeat(2, 1fr); }
   .poster-wall-grid { grid-template-columns: 1fr; }
+  .login-poster-card { padding: 40px 24px; }
+  .login-matrix-grid { grid-template-columns: 1fr; }
 }

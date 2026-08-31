@@ -245,55 +245,73 @@
   <main id="view-login" class="page-view">
     <div class="login-composition-wrapper">
       
+      <!-- Translucent Background Typography Layer -->
+      <div class="login-translucent-bg-text">
+        NST EVENTS &bull; IDENTITY GATEWAY &bull; STUDENT PORTAL
+      </div>
+      <div class="login-translucent-bg-watermark">
+        SEC-02 // ADYPU &bull; NEWTON SCHOOL
+      </div>
+      
       <div class="login-poster-card">
         
-        <div class="micro-annotation" style="color:#000; margin-bottom: 6px;">AUTH GATEWAY // NST-NET</div>
-        <div class="micro-annotation annotation-blue" style="margin-bottom: 16px;">NST EVENTS &bull; NEWTON SCHOOL OF TECHNOLOGY</div>
-
-        <div style="border-bottom: 3px solid #000; padding-bottom: 16px; margin-bottom: 24px;">
-          <span class="micro-annotation" style="color:#000;">IDENTITY VERIFICATION // SEC-02</span>
-          <h1 class="font-display-section" style="font-size: 36px; color: #000; margin-top: 8px;">Access Student Portal</h1>
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #000; padding-bottom: 16px; margin-bottom: 24px;">
+          <div>
+            <div class="micro-annotation" style="color:#000; margin-bottom: 4px;">AUTH GATEWAY // NST-NET</div>
+            <div class="micro-annotation annotation-blue">NST EVENTS &bull; NEWTON SCHOOL OF TECHNOLOGY</div>
+          </div>
+          <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 800; background: #000; color: var(--acid-green); padding: 6px 12px; border: 1px solid #000;">
+            GATEWAY ONLINE
+          </span>
         </div>
 
-        <p style="font-family: var(--font-body); font-size: 14px; color: #222; line-height: 1.6; margin-bottom: 24px;">
-          Sign in with your institutional <strong>@adypu.edu.in</strong> or <strong>@newtonschool.co</strong> account to synchronize: attendance, event registrations, and club management.
+        <div style="margin-bottom: 28px;">
+          <span class="micro-annotation" style="color:#000;">IDENTITY VERIFICATION // SEC-02</span>
+          <h1 class="font-display-section" style="font-size: clamp(34px, 5vw, 48px); color: #000; margin-top: 6px; line-height: 1.05;">
+            ACCESS STUDENT PORTAL
+          </h1>
+        </div>
+
+        <p style="font-family: var(--font-body); font-size: 16px; color: #111; line-height: 1.6; margin-bottom: 28px;">
+          Sign in with your institutional <strong>@adypu.edu.in</strong> or <strong>@newtonschool.co</strong> account to synchronize attendance, event registrations, campus passes, and club management.
         </p>
 
         <!-- Session Handshake Matrix -->
-        <div style="border: 2px solid #000; padding: 16px; background: #fff; margin-bottom: 28px;">
-          <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+        <div style="border: 3px solid #000; padding: 20px 24px; background: #fff; margin-bottom: 32px; box-shadow: 6px 6px 0px #000;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 14px; border-bottom: 2px dashed #000; padding-bottom: 8px;">
             <span class="micro-annotation" style="color:#000;">SESSION HANDSHAKE MATRIX</span>
             <span class="micro-annotation annotation-blue">READY FOR SSO</span>
           </div>
 
-          <table>
-            <tr>
-              <td>CLEARANCE</td>
-              <td>LEVEL-03</td>
-            </tr>
-            <tr>
-              <td>CLUSTER</td>
-              <td>AI-ENG-01</td>
-            </tr>
-            <tr>
-              <td>PROTOCOL</td>
-              <td style="color: var(--electric-blue);">ACTIVE SSO</td>
-            </tr>
-          </table>
+          <div class="login-matrix-grid">
+            <div class="login-matrix-box">
+              <div class="login-matrix-label">CLEARANCE</div>
+              <div class="login-matrix-val">LEVEL-03</div>
+            </div>
+            <div class="login-matrix-box">
+              <div class="login-matrix-label">CLUSTER</div>
+              <div class="login-matrix-val">AI-ENG-01</div>
+            </div>
+            <div class="login-matrix-box">
+              <div class="login-matrix-label">PROTOCOL</div>
+              <div class="login-matrix-val" style="color: var(--electric-blue);">ACTIVE SSO</div>
+            </div>
+          </div>
         </div>
 
-        <button type="button" onclick="switchRoute('home'); showToast('Authenticated via Google SSO');" class="login-google-cta">
-          <svg width="20" height="20" viewBox="0 0 24 24">
+        <!-- Google Login CTA Button -->
+        <button type="button" onclick="handleGoogleLogin()" class="login-google-cta">
+          <svg width="24" height="24" viewBox="0 0 24 24">
             <path fill="#ffffff" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
             <path fill="#ffffff" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
           </svg>
-          <span>CONTINUE WITH GOOGLE</span>
+          <span>CONTINUE WITH GOOGLE SSO</span>
         </button>
 
-        <div style="margin-top: 32px; padding-top: 20px; border-top: 2px dashed #000; text-align: center;">
-          <div class="micro-annotation" style="color:#000; font-size: 9px; margin-bottom: 4px;">RESTRICTED TO ENROLLED NST STUDENTS &amp; FACULTY</div>
-          <div class="micro-annotation" style="color:#555; font-size: 8px;">SEC-02 IDENTITY GATEWAY // @ADYPU.EDU.IN @NEWTONSCHOOL.CO</div>
-          <div class="micro-annotation annotation-blue" style="font-size: 9px; margin-top: 10px;">Crafted by NST Software Developers Club</div>
+        <div style="margin-top: 36px; padding-top: 24px; border-top: 2px dashed #000; text-align: center;">
+          <div class="micro-annotation" style="color:#000; font-size: 10px; margin-bottom: 4px;">RESTRICTED TO ENROLLED NST STUDENTS &amp; FACULTY</div>
+          <div class="micro-annotation" style="color:#444; font-size: 9px;">SEC-02 IDENTITY GATEWAY // @ADYPU.EDU.IN @NEWTONSCHOOL.CO</div>
+          <div class="micro-annotation annotation-blue" style="font-size: 10px; margin-top: 10px;">Crafted by NST Software Developers Club &bull; Lead by Soham Dhande</div>
         </div>
 
       </div>
