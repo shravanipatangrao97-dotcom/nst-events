@@ -28,6 +28,22 @@ app.post('/assignments', async (req, res) => {
     }
 });
 
+// GET /assignments - List assignments ordered by id DESC
+app.get('/assignments', async (req, res) => {
+    try {
+        const query = `
+            SELECT *
+            FROM assignments
+            ORDER BY id DESC;
+        `;
+        const result = await pool.query(query);
+        return res.json(result.rows);
+    } catch (err) {
+        console.error('Error listing assignments:', err);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
