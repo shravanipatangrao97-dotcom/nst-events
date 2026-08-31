@@ -722,7 +722,7 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 60px 20px;
+  padding: 24px 20px;
   position: relative;
   overflow: hidden;
 }
@@ -734,7 +734,7 @@ html, body {
   left: 50%;
   transform: translate(-50%, -50%) rotate(-5deg);
   font-family: var(--font-display);
-  font-size: clamp(100px, 18vw, 220px);
+  font-size: clamp(80px, 16vw, 180px);
   font-weight: 900;
   color: rgba(245, 245, 240, 0.02);
   -webkit-text-stroke: 2px rgba(245, 245, 240, 0.04);
@@ -748,7 +748,7 @@ html, body {
 .gateway-wrapper {
   position: relative;
   width: 100%;
-  max-width: 660px;
+  max-width: 580px;
   z-index: 2;
   margin: 0 auto;
 }
@@ -763,28 +763,28 @@ html, body {
 }
 
 .gateway-corner-bracket.top-left {
-  top: 36px;
+  top: 28px;
   left: -14px;
   border-top: 3px solid var(--lime-success);
   border-left: 3px solid var(--lime-success);
 }
 
 .gateway-corner-bracket.top-right {
-  top: 36px;
+  top: 28px;
   right: -14px;
   border-top: 3px solid var(--lime-success);
   border-right: 3px solid var(--lime-success);
 }
 
 .gateway-corner-bracket.bottom-left {
-  bottom: 36px;
+  bottom: 28px;
   left: -14px;
   border-bottom: 3px solid var(--lime-success);
   border-left: 3px solid var(--lime-success);
 }
 
 .gateway-corner-bracket.bottom-right {
-  bottom: 36px;
+  bottom: 28px;
   right: -14px;
   border-bottom: 3px solid var(--lime-success);
   border-right: 3px solid var(--lime-success);
@@ -796,8 +796,8 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 4px;
-  margin-bottom: 16px;
+  padding: 8px 4px;
+  margin-bottom: 12px;
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--text-primary-bright);
@@ -819,17 +819,17 @@ html, body {
   width: 100%;
   background: var(--bg-card-portal);
   border: 1px solid var(--border-charcoal);
-  padding: 44px 40px;
+  padding: 32px 34px;
   position: relative;
   /* Strong electric blue offset shadow box along right and bottom */
-  box-shadow: 16px 16px 0px var(--electric-blue);
+  box-shadow: 14px 14px 0px var(--electric-blue);
   border-right: 2px solid var(--electric-blue);
   border-bottom: 2px solid var(--electric-blue);
   transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .gateway-card:hover {
-  box-shadow: 20px 20px 0px var(--electric-blue);
+  box-shadow: 18px 18px 0px var(--electric-blue);
 }
 
 /* Section A: Notice Header */
@@ -837,7 +837,7 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 
 .amber-square {
@@ -860,7 +860,7 @@ html, body {
   color: var(--electric-blue);
   border: 1px solid var(--electric-blue);
   background: rgba(7, 87, 255, 0.1);
-  padding: 4px 10px;
+  padding: 3px 8px;
   letter-spacing: 1px;
 }
 
@@ -868,28 +868,28 @@ html, body {
   width: 100%;
   height: 1px;
   background: var(--border-charcoal);
-  margin: 18px 0 24px 0;
+  margin: 12px 0 16px 0;
 }
 
 /* Section B: Heading */
 .gateway-sublabel {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 800;
   color: var(--electric-blue);
   letter-spacing: 2px;
   text-transform: uppercase;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 
 .gateway-main-heading {
   font-family: var(--font-display);
-  font-size: clamp(38px, 5.5vw, 56px);
+  font-size: clamp(30px, 4.2vw, 44px);
   font-weight: 900;
   line-height: 0.95;
   letter-spacing: -1px;
   text-transform: uppercase;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .text-offwhite {
@@ -904,32 +904,32 @@ html, body {
 .gateway-description-box {
   border: 1px solid var(--border-charcoal);
   background: var(--bg-panel-dark);
-  padding: 20px 24px;
-  margin-bottom: 24px;
+  padding: 14px 18px;
+  margin-bottom: 16px;
 }
 
 .gateway-desc-primary {
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--text-primary-bright);
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .gateway-desc-secondary {
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 12px;
   color: var(--text-secondary);
-  line-height: 1.5;
-  margin-bottom: 14px;
+  line-height: 1.45;
+  margin-bottom: 10px;
 }
 
 .gateway-status-check {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10px;
   color: var(--lime-success);
   font-weight: 700;
 }
@@ -938,29 +938,29 @@ html, body {
 .gateway-status-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 28px;
+  gap: 12px;
+  margin-bottom: 18px;
 }
 
 .gateway-status-panel {
   border: 1px solid var(--border-charcoal);
   background: var(--bg-panel-dark);
-  padding: 14px 18px;
+  padding: 10px 14px;
 }
 
 .status-panel-label {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
   color: var(--text-muted-support);
   letter-spacing: 1px;
   text-transform: uppercase;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .status-panel-val {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
   display: flex;
   align-items: center;
@@ -978,29 +978,29 @@ html, body {
 /* Section E: Main Button with Lime Green Offset Shadow */
 .gateway-auth-btn {
   width: 100%;
-  height: 62px;
+  height: 52px;
   background: var(--electric-blue);
   border: 2px solid #000000;
   color: var(--text-primary-bright);
   font-family: var(--font-mono);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 900;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 12px;
   cursor: pointer;
   /* LIME GREEN OFFSET SHADOW MATCHING REFERENCE SCREENSHOT EXACTLY */
-  box-shadow: 6px 6px 0px var(--lime-success);
+  box-shadow: 5px 5px 0px var(--lime-success);
   transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
   position: relative;
 }
 
 .gateway-auth-btn:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: 9px 9px 0px var(--lime-success);
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0px var(--lime-success);
   background: #0046e5;
 }
 
@@ -1011,15 +1011,15 @@ html, body {
 .arrow-icon {
   display: inline-block;
   transition: transform 0.2s ease;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 /* Section F: Backup Portal / Secondary Link */
 .gateway-secondary-link {
   text-align: center;
-  margin-top: 18px;
+  margin-top: 12px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-muted-support);
 }
 
@@ -1039,8 +1039,8 @@ html, body {
   justify-content: space-between;
   align-items: center;
   border-top: 1px dashed var(--border-charcoal);
-  margin-top: 28px;
-  padding-top: 16px;
+  margin-top: 18px;
+  padding-top: 12px;
   font-family: var(--font-mono);
   font-size: 10px;
   color: var(--text-muted-support);
@@ -1049,7 +1049,7 @@ html, body {
 
 .gateway-page-footer {
   text-align: center;
-  margin-top: 24px;
+  margin-top: 14px;
   font-family: var(--font-mono);
   font-size: 10px;
   color: var(--text-muted-support);
@@ -1087,7 +1087,7 @@ html, body {
   .nav-links { display: none; }
   .countdown-grid { grid-template-columns: repeat(2, 1fr); }
   .poster-wall-grid { grid-template-columns: 1fr; }
-  .gateway-card { padding: 32px 20px; box-shadow: 10px 10px 0px var(--electric-blue); }
+  .gateway-card { padding: 24px 18px; box-shadow: 8px 8px 0px var(--electric-blue); }
   .gateway-status-grid { grid-template-columns: 1fr; }
   .gateway-corner-bracket.top-left, .gateway-corner-bracket.top-right,
   .gateway-corner-bracket.bottom-left, .gateway-corner-bracket.bottom-right { display: none; }
