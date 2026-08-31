@@ -315,6 +315,128 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initOrganicMask();
 
+  // ─── Interactive Wave Boundary ─────────────────────────────────────────────
+  function initWaveBoundary() {
+    const svg    = document.getElementById('interactive-boundary-svg');
+    const path   = document.getElementById('boundary-wave-path');
+    const wrapper = document.getElementById('interactive-wave-boundary-container');
+    if (!svg || !path || !wrapper) return;
+
+    // Respect prefers-reduced-motion
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Detect touch-only devices
+    const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+
+    // Original clip-path polygon mapped to SVG viewBox 0 0 1200 80
+    // Percentages from: 0%,0% | 15%,65% | 30%,20% | 45%,80% | 60%,30% | 75%,70% | 90%,15% | 100%,60%
+    // x * 12, y * 0.8  (1200/100, 80/100)
+    const BASE_POINTS = [
+      { x:    0, y:  0  },
+      { x:  150, y: 52  },
+      { x:  300, y: 16  },
+      { x:  450, y: 64  },
+      { x:  600, y: 24  },
+      { x:  750, y: 56  },
+      { x:  900, y: 12  },
+      { x: 1050, y: 48  },
+      { x: 1200, y: 28  },
+    ];
+
+    // Add 5 interpolated intermediate points between each pair for smooth deformation
+    const POINTS = [];
+    for (let i = 0; i < BASE_POINTS.length - 1; i++) {
+      const a = BASE_POINTS[i];
+      const b = BASE_POINTS[i + 1];
+      POINTS.push({ ...a });
+      for (let s = 1; s <= 2; s++) {
+        const t = s / 3;
+        POINTS.push({ x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t });
+      }
+    }
+    POINTS.push({ ...BASE_POINTS[BASE_POINTS.length - 1] });
+
+    const N = POINTS.length;
+    const baseY   = POINTS.map(p => p.y);
+    const currentY = POINTS.map(p => p.y);
+    const velY    = new Array(N).fill(0);
+
+    // Build SVG path (cubic bezier) closing with a bottom rectangle
+    function buildPath(pts) {
+      if (pts.length < 2) return '';
+      let d = `M ${pts[0].x},${pts[0].y}`;
+      for (let i = 0; i < pts.length - 1; i++) {
+        const cx = (pts[i].x + pts[i + 1].x) / 2;
+        d += ` C ${cx},${pts[i].y} ${cx},${pts[i + 1].y} ${pts[i + 1].x},${pts[i + 1].y}`;
+      }
+      d += ` L 1200,80 L 0,80 Z`;
+      return d;
+    }
+
+    // Static path (no interaction)
+    function setStaticPath() {
+      path.setAttribute('d', buildPath(POINTS.map((p, i) => ({ x: p.x, y: baseY[i] }))));
+    }
+
+    if (reducedMotion || isTouch) {
+      setStaticPath();
+      return;
+    }
+
+    let mouseX = -9999;
+    let mouseY = -9999;
+    let rafId  = null;
+    let active = false; // cursor is near boundary
+
+    // Tablet: reduce max displacement
+    const isTablet = window.matchMedia('(max-width: 1024px) and (hover: hover)').matches;
+    const MAX_DISP  = isTablet ? 14 : 28; // px in SVG coords (viewBox 80px tall)
+    const SIGMA     = 200; // Gaussian width in SVG x-coords
+    const SPRING    = 0.09;
+    const DAMP      = 0.72;
+    const PROXIMITY = 180; // px from boundary center to start reacting
+
+    function onMouseMove(e) {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    }
+
+    document.addEventListener('mousemove', onMouseMove, { passive: true });
+
+    function animate() {
+      rafId = requestAnimationFrame(animate);
+
+      // Map mouseX to SVG x-space
+      const rect = wrapper.getBoundingClientRect();
+      const svgX = ((mouseX - rect.left) / rect.width) * 1200;
+      const boundaryCenterY = rect.top + rect.height / 2;
+      const dyPx = mouseY - boundaryCenterY;
+
+      // Amplitude falls off with vertical distance
+      const vertFalloff = Math.max(0, 1 - Math.abs(dyPx) / PROXIMITY);
+      active = vertFalloff > 0.01;
+
+      let anyMoving = false;
+      for (let i = 0; i < N; i++) {
+        const dxSvg = POINTS[i].x - svgX;
+        const gaussian = active
+          ? Math.exp(-(dxSvg * dxSvg) / (2 * SIGMA * SIGMA)) * vertFalloff
+          : 0;
+        // Displace upward (negative Y = up in SVG)
+        const targetY = baseY[i] - MAX_DISP * gaussian;
+        velY[i] = velY[i] * DAMP + (targetY - currentY[i]) * SPRING;
+        currentY[i] += velY[i];
+        if (Math.abs(velY[i]) > 0.01) anyMoving = true;
+      }
+
+      path.setAttribute('d', buildPath(POINTS.map((p, i) => ({ x: p.x, y: currentY[i] }))));
+    }
+
+    setStaticPath();
+    animate();
+  }
+
+  initWaveBoundary();
+
   // Render Poster Cards on Home Page Wall
   function renderHomePosters() {
     const wallGrid = document.getElementById('home-poster-wall-grid');

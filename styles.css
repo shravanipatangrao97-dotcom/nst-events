@@ -567,6 +567,22 @@ html, body {
   margin: -1px 0;
 }
 
+/* Interactive Wave Boundary */
+.interactive-wave-boundary-wrapper {
+  width: 100%;
+  height: 80px;
+  margin: -1px 0;
+  position: relative;
+  overflow: visible;
+  display: block;
+}
+.boundary-svg-el {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
 /* Poster Wall */
 .poster-wall-section {
   background: var(--electric-blue);
