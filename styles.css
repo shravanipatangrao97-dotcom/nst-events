@@ -283,6 +283,31 @@ html, body {
   margin-bottom: 20px;
 }
 
+/* Interactive Animated Organic Vector Mask Wrapper */
+.hero-organic-mask-wrapper {
+  position: absolute;
+  top: 20px;
+  left: -40px;
+  width: min(620px, 92vw);
+  height: 380px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-organic-mask-wrapper.loaded {
+  opacity: 0.92;
+  transform: scale(1);
+}
+
+.hero-blob-svg-el {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
 .hero-headline-group {
   position: relative;
   z-index: 3;

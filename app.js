@@ -178,6 +178,143 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updateCountdown, 1000);
   updateCountdown();
 
+  // ------------------------------------------------------------------------
+  // INTERACTIVE ANIMATED ORGANIC VECTOR MASK
+  // ------------------------------------------------------------------------
+  function initOrganicMask() {
+    const container = document.getElementById('hero-organic-mask-container');
+    const pathEl = document.getElementById('hero-blob-path');
+    const shadowEl = document.getElementById('hero-blob-shadow');
+    const heroWrapper = document.querySelector('.hero-collage-wrapper');
+
+    if (!container || !pathEl || !heroWrapper) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+    setTimeout(() => {
+      container.classList.add('loaded');
+    }, 150);
+
+    const width = 600;
+    const height = 380;
+    const centerX = 280;
+    const centerY = 190;
+    const numPoints = 6;
+    const baseRadius = 145;
+
+    const points = [];
+    for (let i = 0; i < numPoints; i++) {
+      const angle = (i / numPoints) * Math.PI * 2;
+      const radiusVar = baseRadius * (0.85 + (i % 3 === 0 ? 0.28 : i % 2 === 0 ? -0.12 : 0.14));
+      points.push({
+        angle: angle,
+        baseRadius: radiusVar,
+        currentRadius: radiusVar,
+        targetRadius: radiusVar,
+        idlePhase: i * 1.05
+      });
+    }
+
+    let currentCx = centerX;
+    let currentCy = centerY;
+    let targetCx = centerX;
+    let targetCy = centerY;
+
+    let mouseX = centerX;
+    let mouseY = centerY;
+    let isHovered = false;
+    let time = 0;
+
+    heroWrapper.addEventListener('mousemove', (e) => {
+      if (prefersReducedMotion || isTouchDevice) return;
+      const rect = heroWrapper.getBoundingClientRect();
+      const relX = e.clientX - rect.left;
+      const relY = e.clientY - rect.top;
+
+      mouseX = relX;
+      mouseY = relY;
+
+      const offsetX = (relX - rect.width / 3) * 0.1;
+      const offsetY = (relY - rect.height / 3) * 0.1;
+
+      targetCx = centerX + Math.max(-35, Math.min(35, offsetX));
+      targetCy = centerY + Math.max(-25, Math.min(25, offsetY));
+      isHovered = true;
+    });
+
+    heroWrapper.addEventListener('mouseleave', () => {
+      targetCx = centerX;
+      targetCy = centerY;
+      isHovered = false;
+    });
+
+    function pointsToSvgPath(pts, cx, cy) {
+      const coords = pts.map(p => ({
+        x: cx + p.currentRadius * Math.cos(p.angle),
+        y: cy + p.currentRadius * Math.sin(p.angle)
+      }));
+
+      const len = coords.length;
+      let d = `M ${coords[0].x.toFixed(2)} ${coords[0].y.toFixed(2)}`;
+
+      for (let i = 0; i < len; i++) {
+        const p0 = coords[(i - 1 + len) % len];
+        const p1 = coords[i];
+        const p2 = coords[(i + 1) % len];
+        const p3 = coords[(i + 2) % len];
+
+        const tension = 0.24;
+        const cp1x = p1.x + (p2.x - p0.x) * tension;
+        const cp1y = p1.y + (p2.y - p0.y) * tension;
+        const cp2x = p2.x - (p3.x - p1.x) * tension;
+        const cp2y = p2.y - (p3.y - p1.y) * tension;
+
+        d += ` C ${cp1x.toFixed(2)} ${cp1y.toFixed(2)}, ${cp2x.toFixed(2)} ${cp2y.toFixed(2)}, ${p2.x.toFixed(2)} ${p2.y.toFixed(2)}`;
+      }
+
+      d += ' Z';
+      return d;
+    }
+
+    function animate() {
+      time += 0.02;
+
+      currentCx += (targetCx - currentCx) * 0.07;
+      currentCy += (targetCy - currentCy) * 0.07;
+
+      points.forEach((p) => {
+        const idleOffset = Math.sin(time * 1.1 + p.idlePhase) * 6 + Math.cos(time * 0.7 + p.idlePhase * 0.6) * 4;
+
+        let mouseDeform = 0;
+        if (isHovered && !prefersReducedMotion && !isTouchDevice) {
+          const lobeX = currentCx + (p.baseRadius + idleOffset) * Math.cos(p.angle);
+          const lobeY = currentCy + (p.baseRadius + idleOffset) * Math.sin(p.angle);
+          const dx = mouseX - lobeX;
+          const dy = mouseY - lobeY;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 220) {
+            mouseDeform = (1 - dist / 220) * 20;
+          }
+        }
+
+        p.targetRadius = p.baseRadius + idleOffset + mouseDeform;
+        p.currentRadius += (p.targetRadius - p.currentRadius) * 0.08;
+      });
+
+      const pathD = pointsToSvgPath(points, currentCx, currentCy);
+      pathEl.setAttribute('d', pathD);
+      if (shadowEl) shadowEl.setAttribute('d', pathD);
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  }
+
+  initOrganicMask();
+
   // Render Poster Cards on Home Page Wall
   function renderHomePosters() {
     const wallGrid = document.getElementById('home-poster-wall-grid');
