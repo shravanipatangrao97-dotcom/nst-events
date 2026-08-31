@@ -240,78 +240,113 @@
 
 
   <!-- ==========================================================================
-       VIEW 2: LOGIN PAGE (#login)
+       VIEW 2: REDESIGNED IDENTITY GATEWAY / REGISTRATION PAGE (#login)
        ========================================================================== -->
   <main id="view-login" class="page-view">
-    <div class="login-composition-wrapper">
+    <div class="gateway-page-container">
       
-      <!-- Translucent Background Typography Layer -->
-      <div class="login-translucent-bg-text">
-        NST EVENTS &bull; IDENTITY GATEWAY &bull; STUDENT PORTAL
+      <!-- Faint Oversized Background Typographic Watermark -->
+      <div class="gateway-bg-watermark">
+        NST / EVENTS
       </div>
-      <div class="login-translucent-bg-watermark">
-        SEC-02 // ADYPU &bull; NEWTON SCHOOL
-      </div>
-      
-      <div class="login-poster-card">
-        
-        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #000; padding-bottom: 16px; margin-bottom: 24px;">
-          <div>
-            <div class="micro-annotation" style="color:#000; margin-bottom: 4px;">AUTH GATEWAY // NST-NET</div>
-            <div class="micro-annotation annotation-blue">NST EVENTS &bull; NEWTON SCHOOL OF TECHNOLOGY</div>
+
+      <!-- Main Gateway Wrapper with Corner Brackets & Status Bar -->
+      <div class="gateway-wrapper">
+
+        <!-- Corner Brackets -->
+        <div class="gateway-corner-bracket top-left"></div>
+        <div class="gateway-corner-bracket top-right"></div>
+        <div class="gateway-corner-bracket bottom-left"></div>
+        <div class="gateway-corner-bracket bottom-right"></div>
+
+        <!-- Top Status Bar -->
+        <div class="gateway-top-status-bar">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="pulse-dot-blue"></span>
+            <span style="font-weight: 800; color: #F5F5F0;">NST EVENTS PLATFORM</span>
           </div>
-          <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 800; background: #000; color: var(--acid-green); padding: 6px 12px; border: 1px solid #000;">
-            GATEWAY ONLINE
-          </span>
-        </div>
-
-        <div style="margin-bottom: 28px;">
-          <span class="micro-annotation" style="color:#000;">IDENTITY VERIFICATION // SEC-02</span>
-          <h1 class="font-display-section" style="font-size: clamp(34px, 5vw, 48px); color: #000; margin-top: 6px; line-height: 1.05;">
-            ACCESS STUDENT PORTAL
-          </h1>
-        </div>
-
-        <p style="font-family: var(--font-body); font-size: 16px; color: #111; line-height: 1.6; margin-bottom: 28px;">
-          Sign in with your institutional <strong>@adypu.edu.in</strong> or <strong>@newtonschool.co</strong> account to synchronize attendance, event registrations, campus passes, and club management.
-        </p>
-
-        <!-- Session Handshake Matrix -->
-        <div style="border: 3px solid #000; padding: 20px 24px; background: #fff; margin-bottom: 32px; box-shadow: 6px 6px 0px #000;">
-          <div style="display: flex; justify-content: space-between; margin-bottom: 14px; border-bottom: 2px dashed #000; padding-bottom: 8px;">
-            <span class="micro-annotation" style="color:#000;">SESSION HANDSHAKE MATRIX</span>
-            <span class="micro-annotation annotation-blue">READY FOR SSO</span>
-          </div>
-
-          <div class="login-matrix-grid">
-            <div class="login-matrix-box">
-              <div class="login-matrix-label">CLEARANCE</div>
-              <div class="login-matrix-val">LEVEL-03</div>
-            </div>
-            <div class="login-matrix-box">
-              <div class="login-matrix-label">CLUSTER</div>
-              <div class="login-matrix-val">AI-ENG-01</div>
-            </div>
-            <div class="login-matrix-box">
-              <div class="login-matrix-label">PROTOCOL</div>
-              <div class="login-matrix-val" style="color: var(--electric-blue);">ACTIVE SSO</div>
-            </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F5F5F0" stroke-width="2">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+            <span style="font-weight: 800; color: #F5F5F0;">STANDBY</span>
           </div>
         </div>
 
-        <!-- Google Login CTA Button -->
-        <button type="button" onclick="handleGoogleLogin()" class="login-google-cta">
-          <svg width="24" height="24" viewBox="0 0 24 24">
-            <path fill="#ffffff" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-            <path fill="#ffffff" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-          </svg>
-          <span>CONTINUE WITH GOOGLE SSO</span>
-        </button>
+        <!-- Main Identity Gateway Card -->
+        <div class="gateway-card">
+          
+          <!-- Section A: System Notice -->
+          <div class="gateway-notice-header">
+            <div class="gateway-notice-title">
+              <span class="amber-square">■</span>
+              <span class="amber-text">SYSTEM NOTICE // PROTOCOL 01</span>
+            </div>
+            <div class="gateway-url-tag">EVENTS.NSTSDC.ORG</div>
+          </div>
+          <div class="gateway-divider-line"></div>
 
-        <div style="margin-top: 36px; padding-top: 24px; border-top: 2px dashed #000; text-align: center;">
-          <div class="micro-annotation" style="color:#000; font-size: 10px; margin-bottom: 4px;">RESTRICTED TO ENROLLED NST STUDENTS &amp; FACULTY</div>
-          <div class="micro-annotation" style="color:#444; font-size: 9px;">SEC-02 IDENTITY GATEWAY // @ADYPU.EDU.IN @NEWTONSCHOOL.CO</div>
-          <div class="micro-annotation annotation-blue" style="font-size: 10px; margin-top: 10px;">Crafted by NST Software Developers Club &bull; Lead by Soham Dhande</div>
+          <!-- Section B: Main Heading -->
+          <div class="gateway-heading-section">
+            <div class="gateway-sublabel">— IDENTITY GATEWAY</div>
+            <h1 class="gateway-main-heading">
+              <span class="text-offwhite">ACCESS</span><br>
+              <span class="text-blue">NST EVENTS</span>
+            </h1>
+          </div>
+
+          <!-- Section C: Description Box -->
+          <div class="gateway-description-box">
+            <p class="gateway-desc-primary">Your campus ID is your event pass.</p>
+            <p class="gateway-desc-secondary">
+              Sign in with your institutional account to register for events, manage your profile, and track your campus activities.
+            </p>
+            <div class="gateway-status-check">
+              <span class="lime-icon">✔</span>
+              <span>Institutional SSO gateway is active and ready for student registration.</span>
+            </div>
+          </div>
+
+          <!-- Section D: System Status Panels -->
+          <div class="gateway-status-grid">
+            <div class="gateway-status-panel">
+              <div class="status-panel-label">PRIMARY CLUSTER</div>
+              <div class="status-panel-val status-amber">
+                <span class="spin-icon">🔄</span> RESYNC IN PROGRESS
+              </div>
+            </div>
+
+            <div class="gateway-status-panel">
+              <div class="status-panel-label">STANDBY PORTAL</div>
+              <div class="status-panel-val status-lime">
+                <span>🛡️</span> 100% OPERATIONAL
+              </div>
+            </div>
+          </div>
+
+          <!-- Section E: Main Authentication Button -->
+          <button type="button" onclick="handleGoogleLogin()" class="gateway-auth-btn">
+            <span>CONTINUE WITH GOOGLE</span>
+            <span class="arrow-icon">→</span>
+          </button>
+
+          <!-- Section F: Backup Portal / Secondary Link -->
+          <div class="gateway-secondary-link">
+            <span>Direct Link: </span>
+            <a href="https://events.nstsdc.org" target="_blank" class="blue-link">events.nstsdc.org ↗</a>
+          </div>
+
+          <!-- Section G: Footer Metadata -->
+          <div class="gateway-card-footer">
+            <span>GATEWAY: TLS 1.3 // REGION: IN-BOM</span>
+            <span>NST EVENTS // SEC-02</span>
+          </div>
+
+        </div>
+
+        <!-- Outer Page Footer -->
+        <div class="gateway-page-footer">
+          NST STUDENT DEVELOPER COMMUNITY © 2026 // ALL SYSTEMS MONITORED
         </div>
 
       </div>
@@ -422,9 +457,14 @@
             <div style="font-family: var(--font-mono); font-size: 15px; font-weight: 700; color: #fff; margin-top: 4px;">shravani@adypu.edu.in</div>
           </div>
 
-          <div style="border: 1px solid rgba(245,245,242,0.2); padding: 16px; background: #000; grid-column: 1 / -1;">
-            <div class="micro-annotation">YOUR CAMPUS</div>
-            <div style="font-family: var(--font-mono); font-size: 15px; font-weight: 700; color: var(--electric-blue); margin-top: 4px;">Newton School of Technology (ADYPU)</div>
+          <div style="border: 1px solid rgba(245,245,242,0.2); padding: 16px; background: #000; grid-column: 1 / -1; display:flex; justify-space-between; align-items:center;">
+            <div>
+              <div class="micro-annotation">YOUR CAMPUS</div>
+              <div style="font-family: var(--font-mono); font-size: 15px; font-weight: 700; color: var(--electric-blue); margin-top: 4px;">Newton School of Technology (ADYPU)</div>
+            </div>
+            <button onclick="handleLogout()" style="background:#ff3333; border:2px solid #fff; color:#fff; font-family:var(--font-mono); font-size:11px; font-weight:800; padding:8px 16px; cursor:pointer; box-shadow:4px 4px 0px #000;">
+              LOGOUT FROM GATEWAY ↵
+            </button>
           </div>
         </div>
       </div>

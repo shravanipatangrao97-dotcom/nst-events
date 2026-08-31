@@ -4,9 +4,10 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  const storedAuth = localStorage.getItem('nst_auth');
   const state = {
     currentRoute: 'home',
-    isAuthenticated: true,
+    isAuthenticated: storedAuth === 'true',
     user: {
       name: 'Shravani Patangrao',
       id: 'NST-2026-8942',
@@ -111,10 +112,19 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // ------------------------------------------------------------------------
-  // ROUTER LOGIC
+  // ROUTER LOGIC (PRESERVES PRE-LOGIN & POST-LOGIN SEPARATION)
   // ------------------------------------------------------------------------
   window.switchRoute = function(routeName, param = null) {
+    if (!state.isAuthenticated && routeName !== 'login') {
+      routeName = 'login';
+    }
+
     state.currentRoute = routeName;
+
+    const navHeader = document.querySelector('.editorial-nav');
+    if (navHeader) {
+      navHeader.style.display = (routeName === 'login') ? 'none' : 'flex';
+    }
 
     document.querySelectorAll('.nav-link-item').forEach(el => el.classList.remove('active'));
     const activeNav = document.querySelector(`.nav-link-item[data-route="${routeName}"]`);
@@ -550,9 +560,18 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       const modal = document.getElementById('google-sso-modal-overlay');
       if (modal) modal.remove();
+      state.isAuthenticated = true;
+      localStorage.setItem('nst_auth', 'true');
       switchRoute('home');
       showToast('✅ Authenticated successfully via Google SSO (shravani@adypu.edu.in)');
     }, 600);
+  };
+
+  window.handleLogout = function() {
+    state.isAuthenticated = false;
+    localStorage.removeItem('nst_auth');
+    switchRoute('login');
+    showToast('Logged out of NST Events Identity Gateway');
   };
 
   // Toast Helper Exposed Globally
@@ -577,4 +596,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => toast.remove(), 300);
     }, 3000);
   };
+
+  // Initial Route Load Trigger
+  switchRoute(state.isAuthenticated ? 'home' : 'login');
 });

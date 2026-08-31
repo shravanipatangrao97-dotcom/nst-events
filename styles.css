@@ -696,139 +696,364 @@ html, body {
 }
 
 /* ==========================================================================
-   5. LOGIN PAGE COMPOSITION & TRANSLUCENT BACKGROUND WATERMARK
+   5. REDESIGNED IDENTITY GATEWAY / REGISTRATION PAGE (EXACT REFERENCE REPLICA)
    ========================================================================== */
-.login-composition-wrapper {
-  min-height: calc(100vh - 60px);
+:root {
+  --bg-dark-portal: #05060A;
+  --bg-card-portal: #0B0C12;
+  --bg-panel-dark: #07080E;
+  --electric-blue: #0757FF;
+  --text-primary-bright: #F5F5F0;
+  --text-secondary: #D0D3DD;
+  --text-muted-support: #AEB5C5;
+  --border-charcoal: #303440;
+  --amber-warning: #FFAA00;
+  --lime-success: #B8FF00;
+}
+
+.gateway-page-container {
+  min-height: 100vh;
+  background-color: var(--bg-dark-portal);
+  background-image: 
+    linear-gradient(rgba(48, 52, 64, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(48, 52, 64, 0.15) 1px, transparent 1px);
+  background-size: 32px 32px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 90px 24px;
+  padding: 60px 20px;
   position: relative;
   overflow: hidden;
 }
 
-/* Giant Translucent Background Typography Watermark */
-.login-translucent-bg-text {
+/* Faint Oversized Typographic Watermark */
+.gateway-bg-watermark {
   position: absolute;
-  top: 45%;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) rotate(-8deg);
+  transform: translate(-50%, -50%) rotate(-5deg);
   font-family: var(--font-display);
-  font-size: clamp(90px, 15vw, 190px);
+  font-size: clamp(100px, 18vw, 220px);
   font-weight: 900;
-  color: rgba(245, 245, 242, 0.035);
-  -webkit-text-stroke: 2px rgba(245, 245, 242, 0.08);
+  color: rgba(245, 245, 240, 0.02);
+  -webkit-text-stroke: 2px rgba(245, 245, 240, 0.04);
   white-space: nowrap;
   pointer-events: none;
-  z-index: 1;
-  text-transform: uppercase;
+  z-index: 0;
   user-select: none;
-  letter-spacing: -3px;
-  line-height: 0.8;
+  letter-spacing: -4px;
 }
 
-.login-translucent-bg-watermark {
-  position: absolute;
-  bottom: 4%;
-  right: -2%;
-  font-family: var(--font-mono);
-  font-size: clamp(40px, 8vw, 110px);
-  font-weight: 900;
-  color: rgba(0, 87, 255, 0.08);
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 1;
-  text-transform: uppercase;
-  user-select: none;
-}
-
-/* Enlarged Login Registration Poster Card */
-.login-poster-card {
-  width: 100%;
-  max-width: 840px;
-  background: var(--bg-paper-white);
-  color: var(--bg-black);
-  border: 4px solid #000000;
-  padding: 64px 56px;
-  box-shadow: 20px 20px 0px var(--electric-blue);
+.gateway-wrapper {
   position: relative;
+  width: 100%;
+  max-width: 660px;
   z-index: 2;
-  transition: transform 0.2s, box-shadow 0.2s;
+  margin: 0 auto;
 }
 
-.login-poster-card:hover {
-  box-shadow: 24px 24px 0px var(--electric-blue);
+/* Technical Corner Brackets */
+.gateway-corner-bracket {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  z-index: 5;
+  pointer-events: none;
 }
 
-.login-matrix-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin: 28px 0 36px 0;
+.gateway-corner-bracket.top-left {
+  top: 36px;
+  left: -14px;
+  border-top: 3px solid var(--lime-success);
+  border-left: 3px solid var(--lime-success);
 }
 
-.login-matrix-box {
-  border: 2px solid #000000;
-  background: #ffffff;
-  padding: 16px 20px;
+.gateway-corner-bracket.top-right {
+  top: 36px;
+  right: -14px;
+  border-top: 3px solid var(--lime-success);
+  border-right: 3px solid var(--lime-success);
 }
 
-.login-matrix-label {
+.gateway-corner-bracket.bottom-left {
+  bottom: 36px;
+  left: -14px;
+  border-bottom: 3px solid var(--lime-success);
+  border-left: 3px solid var(--lime-success);
+}
+
+.gateway-corner-bracket.bottom-right {
+  bottom: 36px;
+  right: -14px;
+  border-bottom: 3px solid var(--lime-success);
+  border-right: 3px solid var(--lime-success);
+}
+
+/* Top Status Bar */
+.gateway-top-status-bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 4px;
+  margin-bottom: 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-primary-bright);
+  letter-spacing: 1.5px;
+}
+
+.pulse-dot-blue {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--electric-blue);
+  box-shadow: 0 0 10px var(--electric-blue);
+  animation: pulse-glow 1.8s infinite;
+  display: inline-block;
+}
+
+/* Main Card Panel with Electric Blue Offset Shadow */
+.gateway-card {
+  width: 100%;
+  background: var(--bg-card-portal);
+  border: 1px solid var(--border-charcoal);
+  padding: 44px 40px;
+  position: relative;
+  /* Strong electric blue offset shadow box along right and bottom */
+  box-shadow: 16px 16px 0px var(--electric-blue);
+  border-right: 2px solid var(--electric-blue);
+  border-bottom: 2px solid var(--electric-blue);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.gateway-card:hover {
+  box-shadow: 20px 20px 0px var(--electric-blue);
+}
+
+/* Section A: Notice Header */
+.gateway-notice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.amber-square {
+  color: var(--amber-warning);
+  margin-right: 6px;
+}
+
+.amber-text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--amber-warning);
+  letter-spacing: 1.5px;
+}
+
+.gateway-url-tag {
   font-family: var(--font-mono);
   font-size: 10px;
   font-weight: 700;
-  color: #555555;
+  color: var(--electric-blue);
+  border: 1px solid var(--electric-blue);
+  background: rgba(7, 87, 255, 0.1);
+  padding: 4px 10px;
   letter-spacing: 1px;
-  text-transform: uppercase;
 }
 
-.login-matrix-val {
-  font-family: var(--font-mono);
-  font-size: 16px;
-  font-weight: 800;
-  color: #000000;
-  margin-top: 6px;
-}
-
-.login-poster-card table {
+.gateway-divider-line {
   width: 100%;
-  border-collapse: collapse;
-  margin: 20px 0;
-  font-family: var(--font-mono);
+  height: 1px;
+  background: var(--border-charcoal);
+  margin: 18px 0 24px 0;
 }
 
-.login-poster-card td {
-  border: 2px solid #000000;
-  padding: 12px 18px;
+/* Section B: Heading */
+.gateway-sublabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--electric-blue);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.gateway-main-heading {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 5.5vw, 56px);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.text-offwhite {
+  color: var(--text-primary-bright);
+}
+
+.text-blue {
+  color: var(--electric-blue);
+}
+
+/* Section C: Description Box */
+.gateway-description-box {
+  border: 1px solid var(--border-charcoal);
+  background: var(--bg-panel-dark);
+  padding: 20px 24px;
+  margin-bottom: 24px;
+}
+
+.gateway-desc-primary {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary-bright);
+  margin-bottom: 6px;
+}
+
+.gateway-desc-secondary {
+  font-family: var(--font-body);
   font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.gateway-status-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--lime-success);
   font-weight: 700;
 }
 
-.login-google-cta {
-  width: 100%;
-  height: 64px;
-  background: var(--electric-blue);
-  border: 3px solid #000000;
-  color: #ffffff;
+/* Section D: Status Grid */
+.gateway-status-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.gateway-status-panel {
+  border: 1px solid var(--border-charcoal);
+  background: var(--bg-panel-dark);
+  padding: 14px 18px;
+}
+
+.status-panel-label {
   font-family: var(--font-mono);
-  font-size: 16px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted-support);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.status-panel-val {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-amber {
+  color: var(--amber-warning);
+}
+
+.status-lime {
+  color: var(--lime-success);
+}
+
+/* Section E: Main Button with Lime Green Offset Shadow */
+.gateway-auth-btn {
+  width: 100%;
+  height: 62px;
+  background: var(--electric-blue);
+  border: 2px solid #000000;
+  color: var(--text-primary-bright);
+  font-family: var(--font-mono);
+  font-size: 15px;
   font-weight: 900;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 14px;
   cursor: pointer;
-  box-shadow: 6px 6px 0px #000000;
-  transition: transform 0.15s, box-shadow 0.15s, background-color 0.15s;
+  /* LIME GREEN OFFSET SHADOW MATCHING REFERENCE SCREENSHOT EXACTLY */
+  box-shadow: 6px 6px 0px var(--lime-success);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+  position: relative;
 }
 
-.login-google-cta:hover {
+.gateway-auth-btn:hover {
   transform: translate(-3px, -3px);
-  box-shadow: 10px 10px 0px #000000;
-  background: #0046d5;
+  box-shadow: 9px 9px 0px var(--lime-success);
+  background: #0046e5;
+}
+
+.gateway-auth-btn:hover .arrow-icon {
+  transform: translateX(6px);
+}
+
+.arrow-icon {
+  display: inline-block;
+  transition: transform 0.2s ease;
+  font-size: 18px;
+}
+
+/* Section F: Backup Portal / Secondary Link */
+.gateway-secondary-link {
+  text-align: center;
+  margin-top: 18px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted-support);
+}
+
+.blue-link {
+  color: var(--electric-blue);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.blue-link:hover {
+  text-decoration: underline;
+}
+
+/* Section G: Footer Metadata */
+.gateway-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px dashed var(--border-charcoal);
+  margin-top: 28px;
+  padding-top: 16px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted-support);
+  letter-spacing: 0.5px;
+}
+
+.gateway-page-footer {
+  text-align: center;
+  margin-top: 24px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted-support);
+  letter-spacing: 1px;
 }
 
 /* Google SSO Modal Overlay */
@@ -862,6 +1087,8 @@ html, body {
   .nav-links { display: none; }
   .countdown-grid { grid-template-columns: repeat(2, 1fr); }
   .poster-wall-grid { grid-template-columns: 1fr; }
-  .login-poster-card { padding: 40px 24px; }
-  .login-matrix-grid { grid-template-columns: 1fr; }
+  .gateway-card { padding: 32px 20px; box-shadow: 10px 10px 0px var(--electric-blue); }
+  .gateway-status-grid { grid-template-columns: 1fr; }
+  .gateway-corner-bracket.top-left, .gateway-corner-bracket.top-right,
+  .gateway-corner-bracket.bottom-left, .gateway-corner-bracket.bottom-right { display: none; }
 }
