@@ -28,9 +28,27 @@ app.post('/assignments', async (req, res) => {
     }
 });
 
-// GET /assignments - List assignments ordered by id DESC
+// GET /assignments - List assignments (supports ?submitted=true/false)
 app.get('/assignments', async (req, res) => {
     try {
+        const { submitted } = req.query;
+
+        if (submitted !== undefined) {
+            if (submitted !== 'true' && submitted !== 'false') {
+                return res.status(400).json({ message: "Invalid value for submitted parameter. Expected 'true' or 'false'." });
+            }
+
+            const isSubmitted = submitted === 'true';
+            const query = `
+                SELECT *
+                FROM assignments
+                WHERE submitted = $1
+                ORDER BY id DESC;
+            `;
+            const result = await pool.query(query, [isSubmitted]);
+            return res.json(result.rows);
+        }
+
         const query = `
             SELECT *
             FROM assignments
