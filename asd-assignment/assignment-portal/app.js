@@ -44,6 +44,30 @@ app.get('/assignments', async (req, res) => {
     }
 });
 
+// PATCH /assignments/:id - Mark assignment as submitted
+app.patch('/assignments/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const query = `
+            UPDATE assignments
+            SET submitted = true
+            WHERE id = $1
+            RETURNING *;
+        `;
+        const result = await pool.query(query, [id]);
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ message: 'Assignment not found' });
+        }
+
+        return res.json(result.rows[0]);
+    } catch (err) {
+        console.error('Error updating assignment:', err);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
