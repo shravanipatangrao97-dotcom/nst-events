@@ -1,5 +1,5 @@
 /* ==========================================================================
-   NST EVENTS - EXPERIMENTAL EDITORIAL ROUTER & STATE LOGIC
+   NST EVENTS - APP LOGIC (V3.0 ENHANCED COMPONENTS & INTERACTIVITY)
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -22,6 +22,40 @@ document.addEventListener('DOMContentLoaded', () => {
         attendanceAlerts: true
       }
     },
+    guilds: [
+      {
+        id: 'sdc',
+        name: 'NST Software Developers Club',
+        badge: 'PRIMARY DEV GUILD',
+        desc: 'Core software engineering, web architecture, and developer tools infrastructure.',
+        members: 142,
+        joined: true
+      },
+      {
+        id: 'ai-guild',
+        name: 'AI & LLM Systems Guild',
+        badge: 'RESEARCH & AGENTS',
+        desc: 'Autonomous agent frameworks, QLoRA fine-tuning, and neural network pipelines.',
+        members: 98,
+        joined: false
+      },
+      {
+        id: 'devops-guild',
+        name: 'DevOps & Cloud Native Guild',
+        badge: 'INFRASTRUCTURE',
+        desc: 'Kubernetes clusters, eBPF telemetry, CI/CD pipelines, and cloud security.',
+        members: 76,
+        joined: false
+      },
+      {
+        id: 'cp-guild',
+        name: 'Algorithmic Speed Run Guild',
+        badge: 'COMPETITIVE CODING',
+        desc: 'High-speed problem solving, algorithmic challenges, and interview prep.',
+        members: 110,
+        joined: false
+      }
+    ],
     activeCategory: 'ALL',
     searchQuery: '',
     events: [
@@ -104,6 +138,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ------------------------------------------------------------------------
+  // REAL-TIME COUNTDOWN TICKER (HACKNST 2026)
+  // ------------------------------------------------------------------------
+  const targetDate = new Date('2026-10-18T09:00:00+05:30').getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const diff = targetDate - now;
+
+    if (diff <= 0) return;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+    const dEl = document.getElementById('cd-days');
+    const hEl = document.getElementById('cd-hours');
+    const mEl = document.getElementById('cd-mins');
+    const sEl = document.getElementById('cd-secs');
+
+    if (dEl) dEl.textContent = String(days).padStart(2, '0');
+    if (hEl) hEl.textContent = String(hours).padStart(2, '0');
+    if (mEl) mEl.textContent = String(mins).padStart(2, '0');
+    if (sEl) sEl.textContent = String(secs).padStart(2, '0');
+  }
+
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+
   // Render Poster Cards on Home Page Wall
   function renderHomePosters() {
     const wallGrid = document.getElementById('home-poster-wall-grid');
@@ -138,8 +202,79 @@ document.addEventListener('DOMContentLoaded', () => {
 
   renderHomePosters();
 
+  // Render Developer Guilds Roster Grid
+  window.renderGuildsGrid = function() {
+    const gridEl = document.getElementById('developer-guilds-grid');
+    if (!gridEl) return;
+
+    gridEl.innerHTML = state.guilds.map(g => `
+      <div class="guild-card">
+        <span class="guild-tag-badge">${g.badge}</span>
+        <h4 class="guild-title">${g.name}</h4>
+        <p class="guild-desc">${g.desc}</p>
+        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--electric-blue); font-weight: 700; margin-bottom: 14px;">
+          ${g.members} ENROLLED DEVELOPERS
+        </div>
+        <button onclick="toggleGuildJoin('${g.id}')" class="guild-action-btn">
+          ${g.joined ? 'MEMBER &bull; ACTIVE ✓' : 'JOIN GUILD &rarr;'}
+        </button>
+      </div>
+    `).join('');
+  };
+
+  window.toggleGuildJoin = function(guildId) {
+    const g = state.guilds.find(x => x.id === guildId);
+    if (!g) return;
+    g.joined = !g.joined;
+    if (g.joined) g.members += 1;
+    else g.members -= 1;
+
+    showToast(g.joined ? `✅ Joined ${g.name}` : `Left ${g.name}`);
+    renderGuildsGrid();
+  };
+
+  renderGuildsGrid();
+
   // ------------------------------------------------------------------------
-  // DISCOVER RENDER
+  // DIGITAL ATTENDANCE PASS QR MODAL
+  // ------------------------------------------------------------------------
+  window.openQrPassModal = function() {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(14px);z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px;';
+    overlay.id = 'qr-pass-modal-overlay';
+    overlay.innerHTML = `
+      <div class="qr-modal-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid #000;padding-bottom:12px;margin-bottom:16px;">
+          <span class="micro-annotation" style="color:#000;">INSTITUTIONAL QR PASS // LIVE</span>
+          <button onclick="document.getElementById('qr-pass-modal-overlay').remove()" style="background:transparent;border:none;font-size:24px;cursor:pointer;font-weight:700;">&times;</button>
+        </div>
+
+        <div style="text-align:center;">
+          <div style="font-family:var(--font-display);font-size:22px;font-weight:900;">${state.user.name}</div>
+          <div style="font-family:var(--font-mono);font-size:11px;color:#555;margin-top:2px;">ID: ${state.user.id} &bull; ${state.user.email}</div>
+        </div>
+
+        <div class="qr-scanner-frame">
+          <div class="qr-laser-line"></div>
+          <svg width="100%" height="100%" viewBox="0 0 100 100" fill="#000">
+            <rect x="0" y="0" width="30" height="30" fill="#000"/><rect x="5" y="5" width="20" height="20" fill="#fff"/><rect x="10" y="10" width="10" height="10" fill="#000"/>
+            <rect x="70" y="0" width="30" height="30" fill="#000"/><rect x="75" y="5" width="20" height="20" fill="#fff"/><rect x="80" y="10" width="10" height="10" fill="#000"/>
+            <rect x="0" y="70" width="30" height="30" fill="#000"/><rect x="5" y="75" width="20" height="20" fill="#fff"/><rect x="10" y="80" width="10" height="10" fill="#000"/>
+            <rect x="40" y="10" width="10" height="20"/><rect x="40" y="40" width="20" height="20"/><rect x="10" y="40" width="20" height="10"/>
+            <rect x="70" y="40" width="20" height="30"/><rect x="40" y="70" width="30" height="20"/><rect x="80" y="80" width="10" height="10"/>
+          </svg>
+        </div>
+
+        <div style="font-family:var(--font-mono);font-size:11px;text-align:center;font-weight:700;color:var(--electric-blue);">
+          SCAN AT CAMPUS TURNSTILE OR VENUE SCANNER
+        </div>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+  };
+
+  // ------------------------------------------------------------------------
+  // DISCOVER RENDER & SEARCH
   // ------------------------------------------------------------------------
   const discoverGrid = document.getElementById('discover-events-grid');
   const searchInput = document.getElementById('discover-search-input');
@@ -345,7 +480,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (state.currentRoute === 'event-detail') renderEventDetail(eventId);
   };
 
-  // Profile notification toggles
   window.toggleNotification = function(key) {
     if (state.user.notifications.hasOwnProperty(key)) {
       state.user.notifications[key] = !state.user.notifications[key];

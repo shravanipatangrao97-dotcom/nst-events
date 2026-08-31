@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NST Events — Experimental Editorial &amp; Digital Collage</title>
-  <meta name="description" content="NST Events - Student Event Platform & Identity Gateway">
+  <title>NST Events — Student Event Platform (V3.0 Enhanced)</title>
+  <meta name="description" content="NST Events - Official Student Event & Identity Gateway Platform">
   <link rel="icon" href="https://events.nstsdc.org/favicon.ico">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -41,6 +41,10 @@
     </ul>
 
     <div style="display: flex; align-items: center; gap: 16px;">
+      <button onclick="openQrPassModal()" style="background: var(--electric-blue); border: 2px solid #fff; color: #fff; font-family: var(--font-mono); font-size: 10px; font-weight: 700; padding: 6px 12px; cursor: pointer; text-transform: uppercase;">
+        QR PASS ⚡
+      </button>
+
       <button onclick="switchRoute('profile')" style="background: transparent; border: 1px solid rgba(245,245,242,0.2); color: #fff; width: 36px; height: 36px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
@@ -61,6 +65,27 @@
        ========================================================================== -->
   <main id="view-home" class="page-view active">
     
+    <!-- Infinite Marquee Running Banner Component -->
+    <div class="marquee-container">
+      <div class="marquee-content">
+        <span>LIVE HACKATHON REGISTRATION OPEN</span>
+        <span>&bull;</span>
+        <span>HACKNST 2026: 36-HOUR SPRINT</span>
+        <span>&bull;</span>
+        <span>LEVEL-03 INSTITUTIONAL SSO PERMIT REQUIRED</span>
+        <span>&bull;</span>
+        <span>NEWTON SCHOOL OF TECHNOLOGY DEVELOPER ECOSYSTEM</span>
+        <span>&bull;</span>
+        <span>LIVE HACKATHON REGISTRATION OPEN</span>
+        <span>&bull;</span>
+        <span>HACKNST 2026: 36-HOUR SPRINT</span>
+        <span>&bull;</span>
+        <span>LEVEL-03 INSTITUTIONAL SSO PERMIT REQUIRED</span>
+        <span>&bull;</span>
+        <span>NEWTON SCHOOL OF TECHNOLOGY DEVELOPER ECOSYSTEM</span>
+      </div>
+    </div>
+
     <!-- Hero Collage Spread -->
     <div class="hero-collage-wrapper">
       
@@ -91,8 +116,8 @@
           </div>
         </div>
 
-        <!-- Offset Stats Blocks -->
-        <div class="hero-stats-offset-row">
+        <!-- Offset Stats & Geofence Radar Widget Row -->
+        <div style="display: flex; gap: 32px; align-items: flex-start; margin-top: 48px; flex-wrap: wrap;">
           
           <div class="stat-editorial-box">
             <div class="stat-num-giant">00</div>
@@ -110,6 +135,45 @@
             </div>
           </div>
 
+          <!-- Geofence Radar Component -->
+          <div class="radar-widget-box">
+            <div class="radar-circle-display">
+              <div class="radar-dot-pulse"></div>
+            </div>
+            <div>
+              <div class="micro-annotation annotation-green">PERIMETER LOCKED</div>
+              <div style="font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: #fff; margin-top: 2px;">18.5912° N, 73.7389° E</div>
+              <div class="micro-annotation" style="font-size: 9px; color: #777; margin-top: 2px;">ADYPU CAMPUS RADIUS 500M</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Real-Time Countdown Ticker Component -->
+        <div class="countdown-section-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid rgba(245,245,242,0.15); padding-bottom: 12px;">
+            <span class="micro-annotation annotation-green">FLAGSHIP COUNTDOWN // HACKNST 2026</span>
+            <span class="micro-annotation">OCTOBER 18 &bull; AUDITORIUM A1</span>
+          </div>
+
+          <div class="countdown-grid">
+            <div class="countdown-unit-box">
+              <div id="cd-days" class="countdown-num">21</div>
+              <div class="countdown-lbl">DAYS</div>
+            </div>
+            <div class="countdown-unit-box">
+              <div id="cd-hours" class="countdown-num">14</div>
+              <div class="countdown-lbl">HOURS</div>
+            </div>
+            <div class="countdown-unit-box">
+              <div id="cd-mins" class="countdown-num">32</div>
+              <div class="countdown-lbl">MINS</div>
+            </div>
+            <div class="countdown-unit-box">
+              <div id="cd-secs" class="countdown-num">45</div>
+              <div class="countdown-lbl">SECS</div>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -142,6 +206,18 @@
 
     <!-- Torn Paper Edge Back to Black -->
     <div class="torn-section-divider-black"></div>
+
+    <!-- Developer Guilds & Clubs Section -->
+    <div class="guilds-section-wrapper">
+      <div style="border-bottom: 3px solid #fff; padding-bottom: 16px;">
+        <span class="micro-annotation annotation-blue">STUDENT DEVELOPER ECOSYSTEM</span>
+        <h2 class="font-display-section">DEVELOPER GUILDS &amp; CLUBS</h2>
+      </div>
+
+      <div id="developer-guilds-grid" class="guild-grid">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </div>
 
     <!-- Empty Schedule Editorial Section -->
     <div style="max-width: 1320px; margin: 60px auto 100px auto; padding: 0 32px;">
