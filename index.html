@@ -113,7 +113,7 @@
           <span class="name-highlight">SHRAVANI.</span>
         </h1>
 
-        <p style="font-family: var(--font-body); font-size: 18px; color: #a0a4b8; line-height: 1.6; max-width: 520px; margin-top: 24px;">
+        <p style="font-family: var(--font-body); font-size: 18px; color: #ffffff; line-height: 1.6; max-width: 520px; margin-top: 24px;">
           Welcome back to campus. Access your event credentials, synchronized attendance passes, and student developer ecosystem.
         </p>
 
@@ -153,7 +153,7 @@
             <div>
               <div class="micro-annotation annotation-green">PERIMETER LOCKED</div>
               <div style="font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: #fff; margin-top: 2px;">18.5912° N, 73.7389° E</div>
-              <div class="micro-annotation" style="font-size: 9px; color: #777; margin-top: 2px;">ADYPU CAMPUS RADIUS 500M</div>
+              <div class="micro-annotation" style="font-size: 9px; color: #ffffff; margin-top: 2px;">ADYPU CAMPUS RADIUS 500M</div>
             </div>
           </div>
 
@@ -190,8 +190,12 @@
 
     </div>
 
-    <!-- Hand-Ripped Torn Paper Transition Edge -->
-    <div class="torn-section-divider"></div>
+    <!-- Interactive Animated Section Boundary (Hero to Upcoming Events) -->
+    <div id="interactive-wave-boundary-container" class="interactive-wave-boundary-wrapper">
+      <svg id="interactive-boundary-svg" viewBox="0 0 1200 80" preserveAspectRatio="none" class="boundary-svg-el">
+        <path id="boundary-wave-path" fill="#0757FF" d="" />
+      </svg>
+    </div>
 
     <!-- Upcoming Events Poster Wall -->
     <section class="poster-wall-section">
@@ -237,7 +241,7 @@
         <h2 class="font-display-section" style="font-size: 48px; margin-bottom: 16px;">
           NOTHING<br>SCHEDULED.<br>YET.
         </h2>
-        <p style="font-family: var(--font-body); font-size: 16px; color: #a0a4b8; margin-bottom: 32px; max-width: 520px; line-height: 1.6;">
+        <p style="font-family: var(--font-body); font-size: 16px; color: #ffffff; margin-bottom: 32px; max-width: 520px; line-height: 1.6;">
           You don't have anything coming up yet. Explore what's happening around campus, join upcoming hackathons, and connect with technical workshops.
         </p>
         <button onclick="switchRoute('discover')" class="empty-cta-btn">
@@ -374,7 +378,7 @@
       <div style="border-bottom: 3px solid #fff; padding-bottom: 32px;">
         <div class="micro-annotation annotation-blue" style="margin-bottom: 8px;">CAMPUS ARCHIVE // LIVE EVENTS</div>
         <h1 class="font-display-hero">DISCOVER</h1>
-        <p style="font-family: var(--font-body); font-size: 16px; color: #a0a4b8; margin-top: 12px;">
+        <p style="font-family: var(--font-body); font-size: 16px; color: #ffffff; margin-top: 12px;">
           Find your next moment. Explore premium events across campus.
         </p>
       </div>
@@ -439,7 +443,7 @@
       <div style="border-bottom: 3px solid #fff; padding-bottom: 24px; margin-bottom: 40px;">
         <div class="micro-annotation annotation-blue" style="margin-bottom: 8px;">STUDENT DOSSIER // ACCOUNT IDENTITY</div>
         <h1 class="font-display-hero">PROFILE</h1>
-        <p style="font-family: var(--font-mono); font-size: 12px; color: #a0a4b8; margin-top: 8px; text-transform: uppercase;">
+        <p style="font-family: var(--font-mono); font-size: 12px; color: #ffffff; margin-top: 8px; text-transform: uppercase;">
           MANAGE YOUR ACCOUNT AND PREFERENCES
         </p>
       </div>
@@ -483,7 +487,7 @@
       <div style="border: 3px solid #fff; background: var(--bg-dark-card); padding: 40px; margin-bottom: 40px; box-shadow: 12px 12px 0px #000;">
         <div class="micro-annotation annotation-blue" style="margin-bottom: 12px;">COMMUNITY // CLUBS</div>
         <h3 style="font-family: var(--font-display); font-size: 26px; font-weight: 900; margin-bottom: 12px;">MY CLUBS</h3>
-        <p style="font-family: var(--font-body); font-size: 15px; color: #a0a4b8; margin-bottom: 24px;">
+        <p style="font-family: var(--font-body); font-size: 15px; color: #ffffff; margin-bottom: 24px;">
           You're not part of any clubs yet. Join student development groups to access private events and workshops.
         </p>
         <button onclick="switchRoute('discover')" class="empty-cta-btn">
@@ -499,7 +503,7 @@
         <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(245,245,242,0.15); padding:18px 0;">
           <div>
             <div style="font-family: var(--font-mono); font-size: 14px; font-weight: 700;">Push Notifications</div>
-            <div style="font-family: var(--font-body); font-size: 13px; color: #a0a4b8; margin-top: 2px;">Receive push notifications from NST Events.</div>
+            <div style="font-family: var(--font-body); font-size: 13px; color: #ffffff; margin-top: 2px;">Receive push notifications from NST Events.</div>
           </div>
           <input type="checkbox" checked onclick="toggleNotification('push')" style="width:24px; height:24px;">
         </div>
@@ -507,7 +511,7 @@
         <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(245,245,242,0.15); padding:18px 0;">
           <div>
             <div style="font-family: var(--font-mono); font-size: 14px; font-weight: 700;">Event Reminders</div>
-            <div style="font-family: var(--font-body); font-size: 13px; color: #a0a4b8; margin-top: 2px;">Reminders for events you're registered for.</div>
+            <div style="font-family: var(--font-body); font-size: 13px; color: #ffffff; margin-top: 2px;">Reminders for events you're registered for.</div>
           </div>
           <input type="checkbox" checked onclick="toggleNotification('reminders')" style="width:24px; height:24px;">
         </div>
@@ -515,7 +519,7 @@
         <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(245,245,242,0.15); padding:18px 0;">
           <div>
             <div style="font-family: var(--font-mono); font-size: 14px; font-weight: 700;">Club Announcements</div>
-            <div style="font-family: var(--font-body); font-size: 13px; color: #a0a4b8; margin-top: 2px;">Updates from clubs you're part of.</div>
+            <div style="font-family: var(--font-body); font-size: 13px; color: #ffffff; margin-top: 2px;">Updates from clubs you're part of.</div>
           </div>
           <input type="checkbox" onclick="toggleNotification('clubAnnouncements')" style="width:24px; height:24px;">
         </div>
@@ -523,7 +527,7 @@
         <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(245,245,242,0.15); padding:18px 0;">
           <div>
             <div style="font-family: var(--font-mono); font-size: 14px; font-weight: 700;">Attendance Alerts</div>
-            <div style="font-family: var(--font-body); font-size: 13px; color: #a0a4b8; margin-top: 2px;">Check-in windows and dispute updates.</div>
+            <div style="font-family: var(--font-body); font-size: 13px; color: #ffffff; margin-top: 2px;">Check-in windows and dispute updates.</div>
           </div>
           <input type="checkbox" checked onclick="toggleNotification('attendanceAlerts')" style="width:24px; height:24px;">
         </div>

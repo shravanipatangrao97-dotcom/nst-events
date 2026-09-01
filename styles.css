@@ -61,7 +61,7 @@ html, body {
   font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: #a0a4b8;
+  color: #B8FF00;
 }
 
 .annotation-blue { color: var(--electric-blue); }
@@ -172,7 +172,7 @@ html, body {
   font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: #a0a4b8;
+  color: #ffffff;
   text-decoration: none;
   transition: color 0.2s;
   cursor: pointer;
@@ -393,7 +393,7 @@ html, body {
   font-family: var(--font-mono);
   font-size: 10px;
   font-weight: 700;
-  color: #a0a4b8;
+  color: #B8FF00;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   margin-top: 6px;
@@ -497,7 +497,7 @@ html, body {
 .guild-desc {
   font-family: var(--font-body);
   font-size: 12px;
-  color: #a0a4b8;
+  color: #ffffff;
   line-height: 1.5;
   margin-bottom: 16px;
 }
@@ -745,8 +745,8 @@ html, body {
   --bg-panel-dark: #07080E;
   --electric-blue: #0757FF;
   --text-primary-bright: #F5F5F0;
-  --text-secondary: #D0D3DD;
-  --text-muted-support: #AEB5C5;
+  --text-secondary: #ffffff;
+  --text-muted-support: #B8FF00;
   --border-charcoal: #303440;
   --amber-warning: #FFAA00;
   --lime-success: #B8FF00;

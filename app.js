@@ -460,7 +460,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <img src="${ev.img}" alt="${ev.title}">
         </div>
 
-        <p style="font-family: var(--font-body); font-size: 13px; color: #333; line-height: 1.4; margin-bottom: 14px;">
+        <p style="font-family: var(--font-body); font-size: 13px; color: #ffffff; line-height: 1.4; margin-bottom: 14px;">
           ${ev.description}
         </p>
 
@@ -525,7 +525,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <div style="text-align:center;">
           <div style="font-family:var(--font-display);font-size:22px;font-weight:900;">${state.user.name}</div>
-          <div style="font-family:var(--font-mono);font-size:11px;color:#555;margin-top:2px;">ID: ${state.user.id} &bull; ${state.user.email}</div>
+          <div style="font-family:var(--font-mono);font-size:11px;color:#ffffff;margin-top:2px;">ID: ${state.user.id} &bull; ${state.user.email}</div>
         </div>
 
         <div class="qr-scanner-frame">
@@ -585,7 +585,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div style="grid-column: 1 / -1; border: 3px solid #fff; background: var(--bg-dark-card); padding: 60px; text-align: center; box-shadow: 10px 10px 0px var(--electric-blue);">
           <div class="micro-annotation annotation-blue" style="margin-bottom: 12px;">SEARCH // UNMATCHED</div>
           <h2 class="font-display-section" style="font-size: 40px; margin-bottom: 12px;">NO EVENTS FOUND.</h2>
-          <p style="font-family: var(--font-body); font-size: 14px; color: #a0a4b8; margin-bottom: 24px;">
+          <p style="font-family: var(--font-body); font-size: 14px; color: #ffffff; margin-bottom: 24px;">
             Try a different search query or clear your active filters.
           </p>
           <button onclick="clearSearchFilters()" class="empty-cta-btn">
@@ -606,7 +606,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="poster-photo-frame">
           <img src="${ev.img}" alt="${ev.title}">
         </div>
-        <p style="font-family: var(--font-body); font-size: 13px; color: #333; line-height: 1.4; margin-bottom: 14px;">
+        <p style="font-family: var(--font-body); font-size: 13px; color: #ffffff; line-height: 1.4; margin-bottom: 14px;">
           ${ev.description}
         </p>
         <div class="poster-meta-footer">
@@ -645,7 +645,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <h2 class="font-display-section" style="font-size: 44px; margin-bottom: 12px;">
               NO UPCOMING<br>REGISTRATIONS.
             </h2>
-            <p style="font-family: var(--font-body); font-size: 15px; color: #a0a4b8; margin-bottom: 28px; max-width: 500px;">
+            <p style="font-family: var(--font-body); font-size: 15px; color: #ffffff; margin-bottom: 28px; max-width: 500px;">
               You don't have any upcoming event registrations. Explore what's happening around campus.
             </p>
             <button onclick="switchRoute('discover')" class="empty-cta-btn">
@@ -670,7 +670,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div style="border: 2px solid #fff; background: var(--bg-dark-card); padding: 48px; text-align: center;">
           <div class="micro-annotation">ARCHIVE // HISTORICAL</div>
           <h3 style="font-family: var(--font-display); font-size: 24px; font-weight: 800; margin-top: 8px;">NO HISTORICAL EVENTS</h3>
-          <p style="font-family: var(--font-body); font-size: 13px; color: #a0a4b8; margin-top: 8px;">
+          <p style="font-family: var(--font-body); font-size: 13px; color: #ffffff; margin-top: 8px;">
             You haven't attended or cancelled any events yet.
           </p>
         </div>
@@ -789,7 +789,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div style="margin-bottom:24px;">
           <span class="micro-annotation annotation-blue" style="margin-bottom:6px;">INSTITUTIONAL SINGLE SIGN-ON</span>
           <h3 style="font-family:var(--font-display); font-size:24px; font-weight:900; color:#000; margin-top:4px;">Sign in to NST Events</h3>
-          <p style="font-family:var(--font-body); font-size:13px; color:#555; margin-top:6px;">Select your verified student or faculty Google account to continue.</p>
+          <p style="font-family:var(--font-body); font-size:13px; color:#ffffff; margin-top:6px;">Select your verified student or faculty Google account to continue.</p>
         </div>
 
         <!-- Account Selection Tile -->
@@ -805,7 +805,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
 
         <div style="border-top:2px dashed #000; padding-top:16px; display:flex; justify-content:space-between; align-items:center;">
-          <span class="micro-annotation" style="color:#666; font-size:9px;">SEC-02 GATEWAY &bull; ADYPU</span>
+          <span class="micro-annotation" style="color:#B8FF00; font-size:9px;">SEC-02 GATEWAY &bull; ADYPU</span>
           <button id="sso-confirm-btn" onclick="confirmGoogleSSO()" class="login-google-cta" style="height:46px; font-size:13px; padding:0 20px; width:auto;">
             AUTHENTICATE &rarr;
           </button>
