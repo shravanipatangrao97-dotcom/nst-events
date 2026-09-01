@@ -139,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (routeName === 'discover') renderDiscover();
     if (routeName === 'my-events') renderMyEvents();
     if (routeName === 'event-detail' && param) renderEventDetail(param);
+    if (routeName === 'home') requestAnimationFrame(() => initWaveBoundary());
   };
 
   document.querySelectorAll('[data-route]').forEach(el => {
@@ -316,11 +317,14 @@ document.addEventListener('DOMContentLoaded', () => {
   initOrganicMask();
 
   // ─── Interactive Wave Boundary ─────────────────────────────────────────────
+  let waveBoundaryInited = false;
   function initWaveBoundary() {
     const svg    = document.getElementById('interactive-boundary-svg');
     const path   = document.getElementById('boundary-wave-path');
     const wrapper = document.getElementById('interactive-wave-boundary-container');
     if (!svg || !path || !wrapper) return;
+    if (waveBoundaryInited) return;
+    waveBoundaryInited = true;
 
     // Respect prefers-reduced-motion
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -435,7 +439,8 @@ document.addEventListener('DOMContentLoaded', () => {
     animate();
   }
 
-  initWaveBoundary();
+  // Defer to next frame so #view-home is laid out and visible
+  requestAnimationFrame(() => initWaveBoundary());
 
   // Render Poster Cards on Home Page Wall
   function renderHomePosters() {
