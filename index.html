@@ -1,34 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>NST Events</title>
-  <meta name="description" content="NST Events Dashboard"/>
-  <link rel="icon" href="https://events.nstsdc.org/favicon.ico"/>
-  <link rel="stylesheet" href="styles.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NST Events — Experimental Editorial &amp; Digital Collage</title>
+  <meta name="description" content="NST Events - Student Event Platform & Identity Gateway">
+  <link rel="icon" href="https://events.nstsdc.org/favicon.ico">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body class="min-h-full flex flex-col">
-  
-  <div class="clone-wrapper">
-    <!-- Initializing loader card -->
-    <div id="clone-loader" class="clone-loader-card">
-      <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
-        <div class="clone-spinner"></div>
-        <span class="font-stitch-label" style="font-size: 12px; font-weight: 700; color: #9a9db0; letter-spacing: 2px; text-transform: uppercase;">
-          INITIALIZING AUTH GATEWAY...
-        </span>
-      </div>
-    </div>
+<body>
 
-    <!-- Main Auth Card -->
-    <div id="clone-card" class="clone-auth-card" style="display: none;">
-      
-      <!-- NST Logo Header -->
-      <div class="clone-header-logo">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" style="width: 36px; height: 36px;" class="shrink-0" aria-label="NST Logo Mark">
-          <rect width="100" height="100" rx="22" fill="#08080A"/>
-          <g fill="#0047FF">
+  <!-- Background Noise Overlay -->
+  <div class="collage-noise-overlay"></div>
+
+  <!-- ==========================================================================
+       EDITORIAL NAVIGATION HEADER
+       ========================================================================== -->
+  <header class="editorial-nav">
+    
+    <a href="#" data-route="home" class="nav-brand">
+      <div class="nav-logo-box">
+        <svg width="18" height="18" viewBox="0 0 100 100" fill="none">
+          <g fill="#ffffff">
             <path d="M 76.80,19.80 L 76.20,32.40 L 71.50,30.10 L 57.40,45.70 L 53.10,41.80 L 66.80,26.60 L 63.70,23.10 Z"/>
             <path d="M 22.60,23.00 L 26.60,25.00 L 59.00,50.40 L 69.10,41.00 L 66.40,37.50 L 78.50,34.80 L 77.30,46.90 L 73.00,44.50 L 60.50,57.40 L 59.00,57.40 L 28.90,34.40 L 28.90,50.80 L 23.00,56.20 Z"/>
             <path d="M 36.30,46.10 L 39.10,47.30 L 70.30,70.30 L 70.70,50.40 L 73.40,47.70 L 77.00,50.00 L 77.00,81.25 L 75.80,81.25 L 37.90,53.50 L 22.30,69.10 L 21.10,69.10 L 21.50,60.90 Z"/>
@@ -36,112 +29,373 @@
             <path d="M 28.10,66.00 L 28.90,66.00 L 28.90,79.00 L 23.00,79.00 L 22.70,71.50 Z"/>
           </g>
         </svg>
-        <div style="display: flex; flex-direction: column; line-height: 1;">
-          <div class="font-stitch-headline" style="font-size: 20px; font-weight: 800; tracking: -0.5px; color: #ffffff;">
-            NST <span style="color: #0047FF;">EVENTS</span>
-          </div>
-          <span class="font-stitch-label" style="font-size: 11px; color: #717487; letter-spacing: 1px; text-transform: uppercase; margin-top: 2px;">
-            // SEC-02
-          </span>
-        </div>
       </div>
+      <span class="nav-brand-title">NST EVENTS</span>
+    </a>
 
-      <!-- Heading & Info -->
-      <h1 class="clone-title">Access Student Portal</h1>
-      <p class="clone-description">
-        Sign in with your institutional 
-        <span class="clone-badge-chip">@adypu.edu.in</span> or 
-        <span class="clone-badge-chip">@newtonschool.co</span> account to synchronize attendance, event registrations, and club management.
-      </p>
+    <ul class="nav-links">
+      <li><a href="#" data-route="home" class="nav-link-item active">HOME</a></li>
+      <li><a href="#" data-route="discover" class="nav-link-item">CAMPUS &darr;</a></li>
+      <li><a href="#" data-route="my-events" class="nav-link-item">MY EVENTS</a></li>
+      <li><a href="#" data-route="login" class="nav-link-item" style="color: var(--electric-blue);">LOGIN GATEWAY</a></li>
+    </ul>
 
-      <!-- Session Handshake Matrix -->
-      <div class="clone-matrix-box">
-        <div class="clone-matrix-header">
-          <span class="font-stitch-label" style="font-size: 10px; font-weight: 700; color: #717487; letter-spacing: 1.5px; text-transform: uppercase;">
-            SESSION HANDSHAKE MATRIX
-          </span>
-          <span class="font-stitch-label" style="font-size: 10px; font-weight: 700; color: #0047FF; letter-spacing: 1px; text-transform: uppercase;">
-            READY FOR SSO
-          </span>
-        </div>
-        <div class="clone-matrix-grid">
-          <div class="clone-matrix-item">
-            <div class="clone-matrix-lbl">CLEARANCE</div>
-            <div class="clone-matrix-val">LEVEL-03</div>
-          </div>
-          <div class="clone-matrix-item">
-            <div class="clone-matrix-lbl">CLUSTER</div>
-            <div class="clone-matrix-val">AI-ENG-01</div>
-          </div>
-          <div class="clone-matrix-item">
-            <div class="clone-matrix-lbl">PROTOCOL</div>
-            <div class="clone-matrix-val" style="color: #0047FF;">ACTIVE SSO</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dynamic Error Banner -->
-      <div id="clone-error-banner" class="clone-error-banner">
-        <div class="clone-error-hdr">
-          <div style="display: flex; align-items: center; gap: 6px;">
-            <span style="width: 6px; height: 6px; border-radius: 50%; background: #ffb4ab;"></span>
-            <span class="font-stitch-label" style="font-size: 10px; font-weight: 700; color: #ffb4ab; text-transform: uppercase;">
-              AUTHENTICATION DENIED
-            </span>
-          </div>
-          <button onclick="dismissError()" class="font-stitch-label" style="background: transparent; border: 1px solid rgba(255,180,171,0.3); color: #ffb4ab; padding: 2px 6px; font-size: 10px; cursor: pointer; text-transform: uppercase;">
-            DISMISS [&times;]
-          </button>
-        </div>
-        <div class="clone-error-title">INSTITUTIONAL DOMAIN RESTRICTED</div>
-        <div class="clone-error-msg">
-          Access is restricted to institutional accounts (@adypu.edu.in and @newtonschool.co).
-        </div>
-        <div class="clone-error-detail">
-          Your current Google account is not eligible for NST Event Portal access.
-        </div>
-        <div class="clone-error-btn-group">
-          <button type="button" onclick="triggerGoogleAuth()" class="btn-switch-account">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-            </svg>
-            SWITCH GOOGLE ACCOUNT
-          </button>
-          <button type="button" onclick="window.location.href='mailto:events-support@adypu.edu.in?subject=Directory%20Inquiry'" class="btn-contact-coord">
-            CONTACT ACADEMIC COORDINATOR
-          </button>
-        </div>
-      </div>
-
-      <!-- Primary Google SSO Button -->
-      <button id="clone-google-btn" type="button" onclick="triggerGoogleAuth()" class="clone-google-btn" aria-label="Sign in with Google">
-        <div class="google-icon-wrapper">
-          <svg width="16" height="16" viewBox="0 0 24 24">
-            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
-          </svg>
-        </div>
-        <span>CONTINUE WITH GOOGLE</span>
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <button onclick="switchRoute('profile')" style="background: transparent; border: 1px solid rgba(245,245,242,0.2); color: #fff; width: 36px; height: 36px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+        </svg>
       </button>
 
-      <!-- Card Footer -->
-      <div class="clone-footer">
-        <span class="clone-footer-lbl">RESTRICTED TO ENROLLED NST STUDENTS &amp; FACULTY</span>
-        <span class="clone-footer-sub">SEC-02 IDENTITY GATEWAY // @ADYPU.EDU.IN &amp; @NEWTONSCHOOL.CO</span>
+      <div class="nav-user-badge" data-route="profile">
+        <span>SHRAVANI</span>
+      </div>
+    </div>
+
+  </header>
+
+
+  <!-- ==========================================================================
+       VIEW 1: LANDING / HOME PAGE (#home)
+       ========================================================================== -->
+  <main id="view-home" class="page-view active">
+    
+    <!-- Hero Collage Spread -->
+    <div class="hero-collage-wrapper">
+      
+      <div class="hero-bg-text-watermark">NST COLLAGE 01</div>
+
+      <div class="hero-main-composition">
         
-        <div class="clone-footer-credits">
-          <span>Powered by </span>
-          <a href="https://github.com/nst-sdc" target="_blank" rel="noopener noreferrer">NST Software Developers Club</a>
-          <span> | Lead by </span>
-          <a href="https://github.com/sohamdhande" target="_blank" rel="noopener noreferrer">Soham Dhande</a>
+        <div class="blue-paper-strip">
+          NST EVENTS // STUDENT PORTAL &bull; SYSTEM STATUS: ACTIVE
         </div>
+
+        <h1 class="hero-headline-group font-display-hero">
+          GOOD<br>
+          MORNING,<br>
+          <span class="name-highlight">SHRAVANI.</span>
+        </h1>
+
+        <p style="font-family: var(--font-body); font-size: 18px; color: #a0a4b8; line-height: 1.6; max-width: 520px; margin-top: 24px;">
+          Welcome back to campus. Access your event credentials, synchronized attendance passes, and student developer ecosystem.
+        </p>
+
+        <!-- Overlapping Tilted Event Photo Frame -->
+        <div class="hero-tilted-photo-card">
+          <div class="tape-strip"></div>
+          <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&auto=format&fit=crop" alt="Campus Event Photo">
+          <div style="margin-top: 8px; font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: #000; text-transform: uppercase;">
+            FEATURED // HACKNST 2026 SPRINT
+          </div>
+        </div>
+
+        <!-- Offset Stats Blocks -->
+        <div class="hero-stats-offset-row">
+          
+          <div class="stat-editorial-box">
+            <div class="stat-num-giant">00</div>
+            <div>
+              <div class="micro-annotation">EVENTS ATTENDED</div>
+              <div class="micro-annotation annotation-blue" style="font-size: 9px; margin-top: 2px;">VERIFIED CAMPUS CHECK-INS</div>
+            </div>
+          </div>
+
+          <div class="stat-editorial-box" style="transform: rotate(-1deg);">
+            <div class="stat-num-giant" style="color: var(--electric-blue);">00</div>
+            <div>
+              <div class="micro-annotation">POINTS EARNED</div>
+              <div class="micro-annotation annotation-green" style="font-size: 9px; margin-top: 2px;">NST SDC ACTIVITY METRIC</div>
+            </div>
+          </div>
+
+        </div>
+
       </div>
 
     </div>
 
-  </div>
+    <!-- Hand-Ripped Torn Paper Transition Edge -->
+    <div class="torn-section-divider"></div>
+
+    <!-- Upcoming Events Poster Wall -->
+    <section class="poster-wall-section">
+      <div class="poster-wall-container">
+        
+        <div style="border-bottom: 3px solid #000; padding-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end;">
+          <div>
+            <span class="micro-annotation" style="color:#000;">CAMPUS POSTER WALL // LIVE SESSIONS</span>
+            <h2 class="font-display-section" style="color:#000;">UPCOMING EVENTS</h2>
+          </div>
+          <button onclick="switchRoute('discover')" class="poster-register-btn" style="padding: 12px 24px; font-size: 13px;">
+            VIEW ALL CAMPUS EVENTS ↗
+          </button>
+        </div>
+
+        <div id="home-poster-wall-grid" class="poster-wall-grid">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Torn Paper Edge Back to Black -->
+    <div class="torn-section-divider-black"></div>
+
+    <!-- Empty Schedule Editorial Section -->
+    <div style="max-width: 1320px; margin: 60px auto 100px auto; padding: 0 32px;">
+      <div class="empty-poster-container">
+        <div class="empty-poster-watermark">SCHEDULE</div>
+        <div class="micro-annotation annotation-blue" style="margin-bottom: 12px;">SCHEDULE STATUS // 0 UPCOMING</div>
+        <h2 class="font-display-section" style="font-size: 48px; margin-bottom: 16px;">
+          NOTHING<br>SCHEDULED.<br>YET.
+        </h2>
+        <p style="font-family: var(--font-body); font-size: 16px; color: #a0a4b8; margin-bottom: 32px; max-width: 520px; line-height: 1.6;">
+          You don't have anything coming up yet. Explore what's happening around campus, join upcoming hackathons, and connect with technical workshops.
+        </p>
+        <button onclick="switchRoute('discover')" class="empty-cta-btn">
+          EXPLORE EVENTS ↗
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+
+  <!-- ==========================================================================
+       VIEW 2: LOGIN PAGE (#login)
+       ========================================================================== -->
+  <main id="view-login" class="page-view">
+    <div class="login-composition-wrapper">
+      
+      <div class="login-poster-card">
+        
+        <div class="micro-annotation" style="color:#000; margin-bottom: 6px;">AUTH GATEWAY // NST-NET</div>
+        <div class="micro-annotation annotation-blue" style="margin-bottom: 16px;">NST EVENTS &bull; NEWTON SCHOOL OF TECHNOLOGY</div>
+
+        <div style="border-bottom: 3px solid #000; padding-bottom: 16px; margin-bottom: 24px;">
+          <span class="micro-annotation" style="color:#000;">IDENTITY VERIFICATION // SEC-02</span>
+          <h1 class="font-display-section" style="font-size: 36px; color: #000; margin-top: 8px;">Access Student Portal</h1>
+        </div>
+
+        <p style="font-family: var(--font-body); font-size: 14px; color: #222; line-height: 1.6; margin-bottom: 24px;">
+          Sign in with your institutional <strong>@adypu.edu.in</strong> or <strong>@newtonschool.co</strong> account to synchronize: attendance, event registrations, and club management.
+        </p>
+
+        <!-- Session Handshake Matrix -->
+        <div style="border: 2px solid #000; padding: 16px; background: #fff; margin-bottom: 28px;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+            <span class="micro-annotation" style="color:#000;">SESSION HANDSHAKE MATRIX</span>
+            <span class="micro-annotation annotation-blue">READY FOR SSO</span>
+          </div>
+
+          <table>
+            <tr>
+              <td>CLEARANCE</td>
+              <td>LEVEL-03</td>
+            </tr>
+            <tr>
+              <td>CLUSTER</td>
+              <td>AI-ENG-01</td>
+            </tr>
+            <tr>
+              <td>PROTOCOL</td>
+              <td style="color: var(--electric-blue);">ACTIVE SSO</td>
+            </tr>
+          </table>
+        </div>
+
+        <button type="button" onclick="switchRoute('home'); showToast('Authenticated via Google SSO');" class="login-google-cta">
+          <svg width="20" height="20" viewBox="0 0 24 24">
+            <path fill="#ffffff" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#ffffff" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+          </svg>
+          <span>CONTINUE WITH GOOGLE</span>
+        </button>
+
+        <div style="margin-top: 32px; padding-top: 20px; border-top: 2px dashed #000; text-align: center;">
+          <div class="micro-annotation" style="color:#000; font-size: 9px; margin-bottom: 4px;">RESTRICTED TO ENROLLED NST STUDENTS &amp; FACULTY</div>
+          <div class="micro-annotation" style="color:#555; font-size: 8px;">SEC-02 IDENTITY GATEWAY // @ADYPU.EDU.IN @NEWTONSCHOOL.CO</div>
+          <div class="micro-annotation annotation-blue" style="font-size: 9px; margin-top: 10px;">Crafted by NST Software Developers Club</div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+
+  <!-- ==========================================================================
+       VIEW 3: DISCOVER / CAMPUS PAGE (#discover)
+       ========================================================================== -->
+  <main id="view-discover" class="page-view">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 60px 32px 100px 32px;">
+      
+      <div style="border-bottom: 3px solid #fff; padding-bottom: 32px;">
+        <div class="micro-annotation annotation-blue" style="margin-bottom: 8px;">CAMPUS ARCHIVE // LIVE EVENTS</div>
+        <h1 class="font-display-hero">DISCOVER</h1>
+        <p style="font-family: var(--font-body); font-size: 16px; color: #a0a4b8; margin-top: 12px;">
+          Find your next moment. Explore premium events across campus.
+        </p>
+      </div>
+
+      <!-- Search Bar -->
+      <div style="margin: 32px 0 40px 0;">
+        <input type="text" id="discover-search-input" placeholder="Search events, clubs, topics..." style="width:100%; height:60px; background:var(--bg-dark-card); border:3px solid #fff; padding:0 24px; color:#fff; font-family:var(--font-mono); font-size:16px; outline:none;">
+      </div>
+
+      <!-- Category Filter Bar -->
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; border-bottom: 1px solid rgba(245,245,242,0.2); padding-bottom: 20px; margin-bottom: 48px;">
+        <button id="cat-btn-all" onclick="setCategoryFilter('ALL')" class="poster-register-btn active">ALL</button>
+        <button id="cat-btn-workshops" onclick="setCategoryFilter('WORKSHOPS')" class="poster-register-btn">WORKSHOPS</button>
+        <button id="cat-btn-seminars" onclick="setCategoryFilter('SEMINARS')" class="poster-register-btn">SEMINARS</button>
+        <button id="cat-btn-competitions" onclick="setCategoryFilter('COMPETITIONS')" class="poster-register-btn">COMPETITIONS</button>
+        <button id="cat-btn-meetups" onclick="setCategoryFilter('MEETUPS')" class="poster-register-btn">MEETUPS</button>
+        <button id="cat-btn-hackathons" onclick="setCategoryFilter('HACKATHONS')" class="poster-register-btn">HACKATHONS</button>
+        <button id="cat-btn-cultural" onclick="setCategoryFilter('CULTURAL')" class="poster-register-btn">CULTURAL</button>
+        <button id="cat-btn-sports" onclick="setCategoryFilter('SPORTS')" class="poster-register-btn">SPORTS</button>
+        <button id="cat-btn-other" onclick="setCategoryFilter('OTHER')" class="poster-register-btn">OTHER</button>
+      </div>
+
+      <!-- Events Poster Wall Grid -->
+      <div id="discover-events-grid" class="poster-wall-grid">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+    </div>
+  </main>
+
+
+  <!-- ==========================================================================
+       VIEW 4: MY EVENTS PAGE (#my-events)
+       ========================================================================== -->
+  <main id="view-my-events" class="page-view">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 60px 32px 100px 32px;">
+      
+      <div style="border-bottom: 3px solid #fff; padding-bottom: 24px; margin-bottom: 36px;">
+        <div class="micro-annotation annotation-blue" style="margin-bottom: 8px;">PERSONAL ARCHIVE // REGISTRATIONS</div>
+        <h1 class="font-display-hero">MY EVENTS</h1>
+      </div>
+
+      <div style="display: flex; gap: 24px; border-bottom: 2px solid rgba(245,245,242,0.2); margin-bottom: 48px;">
+        <button id="tab-myevents-upcoming" onclick="switchMyEventsTab('upcoming')" class="tab-editorial-btn active">UPCOMING</button>
+        <button id="tab-myevents-past" onclick="switchMyEventsTab('past')" class="tab-editorial-btn">PAST &amp; CANCELLED</button>
+      </div>
+
+      <div id="my-events-content">
+        <!-- Content rendered dynamically by app.js -->
+      </div>
+
+    </div>
+  </main>
+
+
+  <!-- ==========================================================================
+       VIEW 5: PROFILE PAGE (#profile)
+       ========================================================================== -->
+  <main id="view-profile" class="page-view">
+    <div style="max-width: 1000px; margin: 0 auto; padding: 60px 32px 100px 32px;">
+      
+      <div style="border-bottom: 3px solid #fff; padding-bottom: 24px; margin-bottom: 40px;">
+        <div class="micro-annotation annotation-blue" style="margin-bottom: 8px;">STUDENT DOSSIER // ACCOUNT IDENTITY</div>
+        <h1 class="font-display-hero">PROFILE</h1>
+        <p style="font-family: var(--font-mono); font-size: 12px; color: #a0a4b8; margin-top: 8px; text-transform: uppercase;">
+          MANAGE YOUR ACCOUNT AND PREFERENCES
+        </p>
+      </div>
+
+      <!-- Dossier Identity Card -->
+      <div style="border: 3px solid #fff; background: var(--bg-dark-card); padding: 40px; margin-bottom: 40px; box-shadow: 12px 12px 0px var(--electric-blue);">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #fff; padding-bottom: 16px;">
+          <div>
+            <span class="micro-annotation annotation-green">IDENTITY VERIFIED &bull; ACTIVE</span>
+            <h2 style="font-family: var(--font-display); font-size: 36px; font-weight: 900; margin-top: 4px;">Shravani Patangrao</h2>
+          </div>
+          <span style="font-family: var(--font-mono); font-size: 12px; color: #ffffff; background: var(--electric-blue); padding: 8px 16px; font-weight: 700; border: 2px solid #fff;">
+            STUDENT
+          </span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 24px;">
+          <div style="border: 1px solid rgba(245,245,242,0.2); padding: 16px; background: #000;">
+            <div class="micro-annotation">STUDENT ID</div>
+            <div style="font-family: var(--font-mono); font-size: 15px; font-weight: 700; color: #fff; margin-top: 4px;">NST-2026-8942</div>
+          </div>
+
+          <div style="border: 1px solid rgba(245,245,242,0.2); padding: 16px; background: #000;">
+            <div class="micro-annotation">INSTITUTIONAL EMAIL</div>
+            <div style="font-family: var(--font-mono); font-size: 15px; font-weight: 700; color: #fff; margin-top: 4px;">shravani@adypu.edu.in</div>
+          </div>
+
+          <div style="border: 1px solid rgba(245,245,242,0.2); padding: 16px; background: #000; grid-column: 1 / -1;">
+            <div class="micro-annotation">YOUR CAMPUS</div>
+            <div style="font-family: var(--font-mono); font-size: 15px; font-weight: 700; color: var(--electric-blue); margin-top: 4px;">Newton School of Technology (ADYPU)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- My Clubs -->
+      <div style="border: 3px solid #fff; background: var(--bg-dark-card); padding: 40px; margin-bottom: 40px; box-shadow: 12px 12px 0px #000;">
+        <div class="micro-annotation annotation-blue" style="margin-bottom: 12px;">COMMUNITY // CLUBS</div>
+        <h3 style="font-family: var(--font-display); font-size: 26px; font-weight: 900; margin-bottom: 12px;">MY CLUBS</h3>
+        <p style="font-family: var(--font-body); font-size: 15px; color: #a0a4b8; margin-bottom: 24px;">
+          You're not part of any clubs yet. Join student development groups to access private events and workshops.
+        </p>
+        <button onclick="switchRoute('discover')" class="empty-cta-btn">
+          EXPLORE ALL CLUBS ↗
+        </button>
+      </div>
+
+      <!-- Preferences Toggles -->
+      <div style="border: 3px solid #fff; background: var(--bg-dark-card); padding: 40px;">
+        <div class="micro-annotation annotation-blue" style="margin-bottom: 12px;">PREFERENCES // NOTIFICATIONS</div>
+        <h3 style="font-family: var(--font-display); font-size: 26px; font-weight: 900; margin-bottom: 24px;">STAY IN THE LOOP</h3>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(245,245,242,0.15); padding:18px 0;">
+          <div>
+            <div style="font-family: var(--font-mono); font-size: 14px; font-weight: 700;">Push Notifications</div>
+            <div style="font-family: var(--font-body); font-size: 13px; color: #a0a4b8; margin-top: 2px;">Receive push notifications from NST Events.</div>
+          </div>
+          <input type="checkbox" checked onclick="toggleNotification('push')" style="width:24px; height:24px;">
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(245,245,242,0.15); padding:18px 0;">
+          <div>
+            <div style="font-family: var(--font-mono); font-size: 14px; font-weight: 700;">Event Reminders</div>
+            <div style="font-family: var(--font-body); font-size: 13px; color: #a0a4b8; margin-top: 2px;">Reminders for events you're registered for.</div>
+          </div>
+          <input type="checkbox" checked onclick="toggleNotification('reminders')" style="width:24px; height:24px;">
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(245,245,242,0.15); padding:18px 0;">
+          <div>
+            <div style="font-family: var(--font-mono); font-size: 14px; font-weight: 700;">Club Announcements</div>
+            <div style="font-family: var(--font-body); font-size: 13px; color: #a0a4b8; margin-top: 2px;">Updates from clubs you're part of.</div>
+          </div>
+          <input type="checkbox" onclick="toggleNotification('clubAnnouncements')" style="width:24px; height:24px;">
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(245,245,242,0.15); padding:18px 0;">
+          <div>
+            <div style="font-family: var(--font-mono); font-size: 14px; font-weight: 700;">Attendance Alerts</div>
+            <div style="font-family: var(--font-body); font-size: 13px; color: #a0a4b8; margin-top: 2px;">Check-in windows and dispute updates.</div>
+          </div>
+          <input type="checkbox" checked onclick="toggleNotification('attendanceAlerts')" style="width:24px; height:24px;">
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+
+  <!-- ==========================================================================
+       VIEW 6: EVENT DETAIL PAGE (#event-detail)
+       ========================================================================== -->
+  <main id="view-event-detail" class="page-view">
+    <!-- Rendered dynamically by app.js -->
+  </main>
 
   <script src="app.js"></script>
 </body>
